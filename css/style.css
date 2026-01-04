@@ -4,13 +4,121 @@
     --primary-cyan: #00ACC1;
 }
 
-/* ===== CORRECTIONS GENERALES ===== */
-body {
-    padding-top: 0 !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Barre de défilement stylisée pour Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-orange) #f1f1f1;
+/* ===== CORRECTION DÉFINITIVE DROPDOWN MOBILE ===== */
+@media (max-width: 992px) {
+    /* Désactiver complètement le positionnement absolu Bootstrap */
+    .navbar-nav .dropdown-menu {
+        position: static !important;
+        float: none !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        border: 1px solid #ddd !important;
+        border-top: 3px solid #FF9800 !important;
+        box-shadow: none !important;
+        background-color: white !important;
+        border-radius: 0 0 8px 8px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        top: 100% !important;
+    }
+    
+    /* Supprimer l'animation Bootstrap */
+    .dropdown-menu.show {
+        animation: none !important;
+    }
+    
+    /* Ajuster le dropdown-toggle */
+    .navbar-nav .dropdown-toggle {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    .navbar-nav .dropdown-toggle::after {
+        content: "▾" !important;
+        border: none !important;
+        font-size: 1.2em;
+        margin-left: 0.5rem;
+    }
+    
+    /* Items dropdown */
+    .navbar-nav .dropdown-item {
+        padding: 0.8rem 1.5rem !important;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+    }
+    
+    .navbar-nav .dropdown-item:last-child {
+        border-bottom: none;
+    }
+    
+    /* Icônes dans dropdown */
+    .navbar-nav .dropdown-item i {
+        width: 20px;
+        text-align: center;
+        margin-right: 10px;
+    }
+    
+    /* Menu mobile container */
+    .navbar-collapse {
+        padding: 0 15px;
+    }
+    
+    /* Nav items */
+    .navbar-nav .nav-item {
+        width: 100% !important;
+        margin: 0 !important;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+    
+    .navbar-nav .nav-link {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.9rem 0 !important;
+        border-radius: 0 !important;
+    }
+    
+    /* WhatsApp button */
+    .navbar-nav .btn-whatsapp {
+        margin: 1rem 0 !important;
+        width: 100% !important;
+        border-radius: 6px !important;
+    }
+}
+
+/* Correction pour très petits écrans */
+@media (max-width: 576px) {
+    .navbar-nav .dropdown-item {
+        padding: 0.7rem 1.25rem !important;
+        font-size: 0.95rem;
+    }
+    
+    .navbar-nav .dropdown-item i {
+        font-size: 0.9em;
+    }
+}
+/* FORCER la suppression de tout positionnement absolu sur mobile */
+@media (max-width: 992px) {
+    .dropdown-menu[data-bs-popper] {
+        position: static !important;
+        margin: 0 !important;
+        top: auto !important;
+        left: auto !important;
+    }
+    
+    /* S'assurer que le dropdown ne sort pas de l'écran */
+    .navbar-collapse .dropdown-menu {
+        max-height: 400px;
+        overflow-y: auto;
+    }
 }
 
 /* ===== BARRE DE DÉFILEMENT STYLISÉE ===== */
@@ -888,3 +996,4 @@ footer a.text-light:hover {
         padding: 2rem !important;
     }
 }
+
