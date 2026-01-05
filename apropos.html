@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À Propos - PolyMaint</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo1.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+   /* ===== STYLES SPÉCIFIQUES PAGE À PROPOS ===== */
+
+/* Hero section avec images animées */
+.hero-about {
+    margin-top: 80px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+/* "À Propos de PolyMaint" reste blanc */
+.hero-about h1 {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Seulement "PolyMaint, c'est la rigueur technique..." en orange */
+.hero-about .lead {
+    color: #FF9800 !important; /* Orange du logo */
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Correction de l'animation pour éviter le fond gris */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: heroBackgroundAnimation 16s ease-in-out infinite;
+}
+
+/* Overlay pour lisibilité */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6));
+    z-index: -1;
+}
+
+/* Animation améliorée sans fond gris */
+@keyframes heroBackgroundAnimation {
+    0%, 49% {
+        background-image: url('img/slide8.jpeg');
+        opacity: 1;
+    }
+    50%, 51% {
+        background-image: url('img/slide8.jpeg');
+        opacity: 0.5;
+    }
+    52%, 100% {
+        background-image: url('img/slide9.jpeg');
+        opacity: 1;
+    }
+}
+
+/* Section styles */
+.section-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 3rem;
+    margin-bottom: 3rem;
+    border-left: 5px solid #FF9800;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    color: #FF9800;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #00ACC1;
+}
+
+/* Image containers */
+.about-image-container {
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-image-container:hover {
+    transform: translateY(-5px);
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-image-container:hover .about-image {
+    transform: scale(1.05);
+}
+
+/* Icon boxes */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-box i {
+    font-size: 1.8rem;
+    color: #FF9800;
+}
+
+/* Team section */
+.team-section {
+    background: #f8f9fa;
+    padding: 4rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.team-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Values section */
+.value-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-top: 3px solid #00ACC1;
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    color: #FF9800;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-about {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        margin-top: 70px;
+        min-height: 350px;
+    }
+    
+    .section-card {
+        padding: 2rem;
+    }
+    
+    .about-image-container {
+        height: 250px;
+    }
+    
+    .hero-about h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-about .lead {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-about {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        min-height: 300px;
+    }
+    
+    .section-card {
+        padding: 1.5rem;
+    }
+    
+    .about-image-container {
+        height: 200px;
+    }
+    
+    .hero-about h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-about .lead {
+        font-size: 1.1rem;
+    }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER STYLÉ ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+      <div class="container">
+        <!-- Logo dans la navbar avec texte -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
+          <div class="d-flex flex-column">
+            <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
+            <small class="text-muted fw-light" style="font-size: 0.7rem; line-height: 1.1;">au service de vos équipements</small>
+          </div>
+        </a>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Accueil -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Accueil
+              </a>
+            </li>
+
+            <!-- Nos Domaines -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-layer-group me-1"></i>Nos Domaines
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electronique et Electricité</a></li>
+              </ul>
+            </li>
+
+            <!-- Nos Services -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-cogs me-1"></i>Nos Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#services"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item" href="#services"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+              </ul>
+            </li>
+
+            <!-- À Propos -->
+            <li class="nav-item mx-1">
+              <a class="nav-link active" href="#apropos">
+                <i class="fas fa-info-circle me-1"></i>À Propos
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="#contact">
+                <i class="fas fa-envelope me-1"></i>Contact
+              </a>
+            </li>
+
+            <!-- WhatsApp CTA -->
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-whatsapp px-4" href="https://wa.me/221778401549" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-about" id="hero">
+    <!-- Méthode 1: Plus simple -->
+    <div class="hero-background"></div>
+    
+    <!-- Méthode 2: Alternative (décommentez pour utiliser) -->
+    <!-- <div class="hero-slideshow">
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div> -->
+    
+    <div class="hero-overlay"></div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="display-4 fw-bold mb-3">À Propos de PolyMaint</h1>
+          <p class="lead mb-4">PolyMaint, c'est la rigueur technique, la polyvalence et la passion pour le service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOTRE MISSION ===== -->
+  <section class="py-5 bg-white" id="mission">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="section-card">
+            <div class="icon-box">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h2 class="section-title">Notre mission</h2>
+            <p class="mb-4">Chez PolyMaint, nous avons pour vocation d'offrir des solutions techniques de qualité dans des domaines variés comme l'informatique, le biomédical, les télécoms, les fluides et climatisation, ou encore l'automatisme industriel.</p>
+            <p class="mb-0">Notre mission est d'accompagner durablement nos clients à travers une expertise de terrain, un suivi personnalisé et une exigence constante de performance.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-image-container">
+            <img src="img/informatique1.jpeg" alt="Notre mission - Installation réseau" class="about-image">
+          </div>
+          <div class="text-center">
+            <small class="text-muted">Installation et configuration réseau</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOTRE VISION ===== -->
+  <section class="py-5 bg-light" id="vision">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+          <div class="section-card">
+            <div class="icon-box">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h2 class="section-title">Notre vision</h2>
+            <p class="mb-4">Être un acteur de référence dans les services techniques multidisciplinaires, en bâtissant une relation de confiance, de proximité et de fiabilité avec chaque client.</p>
+            <p class="mb-0">Nous plaçons l'humain et l'innovation au cœur de nos projets, pour construire ensemble un avenir technique, sûr et efficient.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="about-image-container">
+            <img src="img/electrique.jpeg" alt="Notre vision - Installation électrique" class="about-image">
+          </div>
+          <div class="text-center">
+            <small class="text-muted">Installations électriques industrielles</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOS ENGAGEMENTS ===== -->
+  <section class="py-5 bg-white" id="engagements">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="section-card">
+            <div class="icon-box">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h2 class="section-title">Nos engagements</h2>
+            <p class="mb-4">PolyMaint s'engage sur la qualité, la sécurité et la réactivité. Nos équipes sont formées en continu pour garantir des interventions conformes aux normes les plus strictes.</p>
+            <p class="mb-0">Nous privilégions des solutions pérennes, des outils modernes et une communication fluide avec nos partenaires.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-image-container">
+            <img src="img/plomberie2.jpeg" alt="Nos engagements - Installation plomberie" class="about-image">
+          </div>
+          <div class="text-center">
+            <small class="text-muted">Installations de plomberie industrielle</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOS VALEURS ===== -->
+  <section class="py-5 bg-light" id="valeurs">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title mb-3 text-center">Nos valeurs</h2>
+          <p class="lead text-muted">Les principes qui guident notre action quotidienne</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Qualité</h4>
+            <p class="text-muted">Excellence technique et respect des normes les plus strictes dans toutes nos interventions.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-3">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Sécurité</h4>
+            <p class="text-muted">Priorité absolue à la sécurité des personnes, des équipements et des installations.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-3">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Réactivité</h4>
+            <p class="text-muted">Interventions rapides et efficaces pour minimiser les temps d'arrêt de vos équipements.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-3">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-3">Proximité</h4>
+            <p class="text-muted">Écoute active et accompagnement personnalisé pour chaque client et chaque projet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOTRE ÉQUIPE ===== -->
+  <section class="team-section" id="equipe">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title mb-3 text-center">Une équipe pluridisciplinaire</h2>
+          <p class="lead text-muted mb-4">PolyMaint repose sur une équipe dynamique, composée d'ingénieurs, de techniciens spécialisés et de conseillers à l'écoute des besoins du client.</p>
+          <p>Cette diversité de compétences nous permet d'intervenir efficacement dans plusieurs secteurs techniques, tout en maintenant une approche globale et cohérente.</p>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="about-image-container">
+            <img src="img/equipe.jpeg" alt="Notre équipe PolyMaint" class="about-image">
+          </div>
+          <div class="text-center mt-3">
+            <small class="text-muted">L'équipe PolyMaint - Experts multidisciplinaires</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row g-4 mt-5">
+        <div class="col-md-4">
+          <div class="team-member">
+            <div class="icon-box mx-auto">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-2">Ingénieurs spécialisés</h4>
+            <p class="text-muted small">Experts dans leurs domaines respectifs avec des années d'expérience terrain.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="team-member">
+            <div class="icon-box mx-auto">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-2">Techniciens certifiés</h4>
+            <p class="text-muted small">Formation continue pour maîtriser les dernières technologies et normes.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="team-member">
+            <div class="icon-box mx-auto">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-2">Conseillers techniques</h4>
+            <p class="text-muted small">À votre écoute pour analyser vos besoins et proposer les meilleures solutions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="py-5" style="background: linear-gradient(135deg, #FF9800, #00ACC1);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center text-white">
+          <h2 class="mb-3">Prêt à travailler avec nous ?</h2>
+          <p class="lead mb-4">Notre équipe est à votre disposition pour discuter de vos projets techniques.</p>
+          <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+            <a href="tel:+221778401549" class="btn btn-light btn-lg px-4">
+              <i class="fas fa-phone me-2"></i>+221 77 840 15 49
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="btn btn-whatsapp btn-lg px-4">
+              <i class="fab fa-whatsapp me-2"></i>Contact WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand mb-3">
+            <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
+          </div>
+          <p class="text-light mb-4">
+            Votre partenaire pour une maintenance fiable et durable. 
+            Nous offrons des solutions techniques complètes pour tous vos équipements.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/Bme.sn" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/polymaint_suarl/" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/polymaint/posts/?feedView=all" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="text-white fs-5">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="#mission" class="text-light text-decoration-none">Notre mission</a></li>
+            <li class="mb-2"><a href="#equipe" class="text-light text-decoration-none">Notre équipe</a></li>
+            <li><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="genie-biomedical.html" class="text-light text-decoration-none">Génie Biomédical</a></li>
+            <li class="mb-2"><a href="industrie-automatisme.html" class="text-light text-decoration-none">Industrie & Automatisme</a></li>
+            <li class="mb-2"><a href="froid-climatisation.html" class="text-light text-decoration-none">Froid & Climatisation</a></li>
+            <li class="mb-2"><a href="informatique-telecom.html" class="text-light text-decoration-none">Informatique & Telecom</a></li>
+            <li><a href="electricite-electronique.html" class="text-light text-decoration-none">Électricité & Électronique</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-phone me-2 text-accent"></i>
+              <a href="tel:+221778401549" class="text-light text-decoration-none">+221 77 840 15 49</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:contact@polymaint.sn" class="text-light text-decoration-none">contact@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-globe me-2 text-accent"></i>
+              <a href="http://www.polymaint.sn" class="text-light text-decoration-none">www.polymaint.sn</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt me-2 text-accent"></i>
+              <span class="text-light">Sénégal</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="bg-secondary my-4">
+      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2026 PolyMaint – Tous droits réservés. | À Propos</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script pour animations -->
+  <script src="js/script.js"></script>
+</body>
+</html>
