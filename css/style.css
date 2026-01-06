@@ -996,3 +996,33 @@ footer a.text-light:hover {
         padding: 2rem !important;
     }
 }
+
+/* ===== FIX ALIGNEMENT NAVBAR MOBILE ===== */
+@media (max-width: 768px) {
+
+    .navbar .container {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Logo + texte */
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        max-width: 75%;
+    }
+
+    /* Texte sous le logo */
+    .navbar-brand small {
+        font-size: 0.6rem;
+        line-height: 1;
+    }
+
+    /* Bouton hamburger parfaitement centré */
+    .navbar-toggler {
+        align-self: center;
+        margin-top: 0;
+    }
+}
+
+
