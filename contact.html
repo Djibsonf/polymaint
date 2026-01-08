@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - PolyMaint</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo1.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* ===== STYLES SPÉCIFIQUES CONTACT ===== */
+    
+    /* Hero Contact */
+    .hero-contact {
+        margin-top: 80px;
+        padding: 80px 0; /* Un peu réduit */
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero-contact .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('img/slide11.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+    
+    .hero-contact .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
+        z-index: -1;
+    }
+    
+    /* "Contactez-nous" en BLANC */
+    .hero-contact h1 {
+        color: white !important;
+        font-size: 3rem; /* Légèrement réduit */
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* "Besoin d'un renseignement..." EN ORANGE, GRAS ET 2 LIGNES */
+    .hero-contact .lead {
+        color: #FF9800 !important; /* Orange du logo */
+        font-size: 1.4rem;
+        font-weight: 700 !important; /* Gras */
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.4;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Section Contact */
+    .contact-section {
+        padding: 70px 0 50px 0; /* Réduit le padding bas */
+        background: #f8f9fa;
+    }
+    
+    /* Titres "Envoyez-nous un message" et "Informations de contact" EN ORANGE */
+    .section-title {
+        color: #FF9800 !important; /* Orange du logo */
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+        font-size: 1.8rem; /* Légèrement réduit */
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #00ACC1; /* Ligne bleue en dessous */
+    }
+    
+    /* Formulaire */
+    .contact-form-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.5rem; /* Réduit de 3rem */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-left: 5px solid #FF9800;
+        height: 100%;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem; /* Réduit de 1.8rem */
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: 0.95rem; /* Légèrement réduit */
+    }
+    
+    .form-control, .form-select {
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 10px 15px; /* Réduit de 12px */
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #FF9800;
+        box-shadow: 0 0 0 0.25rem rgba(255, 152, 0, 0.25);
+        outline: none;
+    }
+    
+    textarea.form-control {
+        min-height: 130px; /* Réduit de 150px */
+        resize: vertical;
+    }
+    
+    /* Bouton Envoyer */
+    .btn-send {
+        background: linear-gradient(135deg, #FF9800, #00ACC1);
+        border: none;
+        color: white;
+        padding: 12px 35px; /* Réduit de 14px 40px */
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1rem; /* Réduit de 1.1rem */
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    .btn-send:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 152, 0, 0.3);
+        color: white;
+    }
+    
+    /* Informations de contact */
+    .contact-info-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.2rem; /* Réduit de 2.5rem */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-top: 5px solid #00ACC1;
+        height: 100%;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem; /* Réduit de 2rem */
+        padding-bottom: 1.5rem; /* Réduit de 2rem */
+        border-bottom: 1px solid #eee;
+    }
+    
+    .contact-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .contact-icon {
+        width: 55px; /* Réduit de 60px */
+        height: 55px; /* Réduit de 60px */
+        background: rgba(255, 152, 0, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1.2rem; /* Réduit de 1.5rem */
+        flex-shrink: 0;
+    }
+    
+    .contact-icon i {
+        font-size: 1.3rem; /* Réduit de 1.5rem */
+        color: #FF9800;
+    }
+    
+    .contact-details h4 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 0.4rem; /* Réduit */
+        font-size: 1.1rem; /* Légèrement réduit */
+    }
+    
+    .contact-details p {
+        color: #666;
+        margin-bottom: 0.2rem; /* Réduit de 0.25rem */
+        font-size: 0.9rem; /* Légèrement réduit */
+    }
+    
+    .contact-details a {
+        color: #00ACC1;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 0.9rem; /* Légèrement réduit */
+    }
+    
+    .contact-details a:hover {
+        color: #FF9800;
+    }
+    
+    /* Carte Google Maps - INTÉGRÉE DANS LA CARTE DROITE */
+    .map-container {
+        margin-top: 2rem;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .map-frame {
+        width: 100%;
+        height: 250px; /* Réduit de 300px */
+        border: none;
+    }
+    
+    .map-actions {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        background: white;
+        border-top: 1px solid #eee;
+    }
+    
+    .btn-map {
+        background: #f8f9fa;
+        border: 2px solid #00ACC1;
+        color: #00ACC1;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.9rem; /* Ajouté */
+    }
+    
+    .btn-map:hover {
+        background: #00ACC1;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 172, 193, 0.3);
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+        .contact-form-card,
+        .contact-info-card {
+            margin-bottom: 2rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .hero-contact {
+            padding: 60px 0;
+            margin-top: 70px;
+            min-height: 250px;
+        }
+        
+        .hero-contact h1 {
+            font-size: 2.2rem; /* Réduit de 2.5rem */
+        }
+        
+        .hero-contact .lead {
+            font-size: 1.2rem;
+            max-width: 90%;
+        }
+        
+        .contact-section {
+            padding: 50px 0 40px 0;
+        }
+        
+        .contact-form-card,
+        .contact-info-card {
+            padding: 2rem;
+        }
+        
+        .contact-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.6rem; /* Réduit pour mobile */
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-contact {
+            padding: 50px 0;
+            min-height: 200px;
+        }
+        
+        .hero-contact h1 {
+            font-size: 1.8rem; /* Réduit de 2rem */
+        }
+        
+        .hero-contact .lead {
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+        
+        .contact-section {
+            padding: 40px 0 30px 0;
+        }
+        
+        .contact-form-card,
+        .contact-info-card {
+            padding: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+        }
+        
+        .btn-send {
+            padding: 10px 25px;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+    }
+        /* ===== CARTE EN PLEINE LARGEUR ===== */
+
+    .full-width-map-container {
+        width: 100%;
+        margin-top: 40px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid #ddd;
+    }
+
+    .full-width-map {
+        width: 100%;
+        height: 400px;
+        border: none;
+        display: block;
+    }
+
+    .full-width-map-actions {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        background: white;
+        border-top: 1px solid #eee;
+    }
+
+    .btn-map {
+        background: #f8f9fa;
+        border: 2px solid #00ACC1;
+        color: #00ACC1;
+        padding: 10px 25px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+
+    .btn-map:hover {
+        background: #00ACC1;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 172, 193, 0.3);
+        text-decoration: none;
+    }
+
+    .btn-map i {
+        margin-right: 8px;
+    }
+
+    /* Responsive pour la carte */
+    @media (max-width: 768px) {
+        .full-width-map {
+            height: 300px;
+        }
+        
+        .full-width-map-container {
+            margin-top: 30px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .full-width-map {
+            height: 250px;
+        }
+        
+        .btn-map {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+    /* Animation pour les champs de formulaire */
+.form-group.focused .form-label {
+    color: #FF9800;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.form-control {
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.1);
+}
+
+/* Style pour l'état désactivé du bouton */
+.btn-send:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER STYLÉ ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+      <div class="container">
+        <!-- Logo dans la navbar avec texte -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
+          <div class="d-flex flex-column">
+            <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
+            <small class="text-muted fw-light" style="font-size: 0.7rem; line-height: 1.1;">au service de vos équipements</small>
+          </div>
+        </a>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Accueil -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Accueil
+              </a>
+            </li>
+
+            <!-- Nos Domaines -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-layer-group me-1"></i>Nos Domaines
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electronique et Electricité</a></li>
+              </ul>
+            </li>
+
+            <!-- Nos Services -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-cogs me-1"></i>Nos Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#services"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item" href="#services"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+              </ul>
+            </li>
+
+            <!-- À Propos -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="apropos.html">
+                <i class="fas fa-info-circle me-1"></i>À Propos
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="nav-item mx-1">
+              <a class="nav-link active" href="contact.html">
+                <i class="fas fa-envelope me-1"></i>Contact
+              </a>
+            </li>
+
+            <!-- WhatsApp CTA -->
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-whatsapp px-4" href="https://wa.me/221778401549" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-contact">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="display-4 fw-bold mb-3">Contactez-nous</h1>
+          <p class="lead mb-4">Besoin d'un renseignement ? D'un devis ? L'équipe PolyMaint est à votre écoute.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- ===== SECTION CONTACT ===== -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <div class="row">
+            <!-- Formulaire (gauche) -->
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="contact-form-card">
+                    <h2 class="section-title mb-4">Envoyez-nous un message</h2>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom complet *</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adresse email *</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Votre numéro de téléphone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" name="message" placeholder="Votre message..." rows="6" required></textarea>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn-send">
+                                <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        
+        <!-- Informations (droite) -->
+        <div class="col-lg-4">
+          <div class="contact-info-card">
+            <h2 class="section-title mb-4">Informations de contact</h2>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Adresse</h4>
+                <p>Dakar / Grand Mbao</p>
+                <p>Cité Sidak</p>
+                <p>Sénégal</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Téléphone</h4>
+                <p><a href="tel:+221338311431">+221 33 831 14 31</a></p>
+                <p><a href="tel:+221778401549">+221 77 840 15 49</a></p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <p><a href="mailto:infos@polymaint.sn">infos@polymaint.sn</a></p>
+                <p><a href="mailto:contact@polymaint.sn">contact@polymaint.sn</a></p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Horaires d'ouverture</h4>
+                <p>Lundi – Vendredi</p>
+                <p>8h30 – 18h</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CARTE EN PLEINE LARGEUR EN DESSOUS -->
+      <div class="full-width-map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.309017476689!2d-17.3213204!3d14.7293538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec17530ba29acb7%3A0xb20c13b4fa674a19!2sGrand-Mbao%2C%20Dakar%2C%20S%C3%A9n%C3%A9gal!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+          class="full-width-map"
+          allowfullscreen="" 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        <div class="full-width-map-actions">
+          <a href="https://www.google.com/maps/place/Grand-Mbao,+Dakar,+S%C3%A9n%C3%A9gal/@14.728583,-17.319088,13z/data=!4m6!3m5!1s0xec17530ba29acb7:0xb20c13b4fa674a19!8m2!3d14.7293538!4d-17.3213204!16s%2Fg%2F1q69_1jyy?hl=fr-FR&entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoASAFQAw%3D%3D" 
+             target="_blank" 
+             class="btn-map">
+            <i class="fas fa-expand me-2"></i>Agrandir la carte
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand mb-3">
+            <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
+          </div>
+          <p class="text-light mb-4">
+            Votre partenaire pour une maintenance fiable et durable. 
+            Nous offrons des solutions techniques complètes pour tous vos équipements.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/Bme.sn" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/polymaint_suarl/" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/polymaint/posts/?feedView=all" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="text-white fs-5">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="apropos.html#mission" class="text-light text-decoration-none">Notre mission</a></li>
+            <li class="mb-2"><a href="apropos.html#equipe" class="text-light text-decoration-none">Notre équipe</a></li>
+            <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="genie-biomedical.html" class="text-light text-decoration-none">Génie Biomédical</a></li>
+            <li class="mb-2"><a href="industrie-automatisme.html" class="text-light text-decoration-none">Industrie & Automatisme</a></li>
+            <li class="mb-2"><a href="froid-climatisation.html" class="text-light text-decoration-none">Froid & Climatisation</a></li>
+            <li class="mb-2"><a href="informatique-telecom.html" class="text-light text-decoration-none">Informatique & Telecom</a></li>
+            <li><a href="electricite-electronique.html" class="text-light text-decoration-none">Électricité & Électronique</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-phone me-2 text-accent"></i>
+              <a href="tel:+221778401549" class="text-light text-decoration-none">+221 77 840 15 49</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:contact@polymaint.sn" class="text-light text-decoration-none">contact@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-globe me-2 text-accent"></i>
+              <a href="http://www.polymaint.sn" class="text-light text-decoration-none">www.polymaint.sn</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt me-2 text-accent"></i>
+              <span class="text-light">Dakar, Sénégal</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="bg-secondary my-4">
+      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2026 PolyMaint – Tous droits réservés. | Contact</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script pour animations -->
+  <script src="js/script.js"></script>
+  
+ <script>
+    // Gestion du formulaire de contact (sans serveur)
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche l'envoi HTTP
+            
+            // Vérifier la validité du formulaire
+            if (!form.checkValidity()) {
+                // Si invalide, déclencher la validation native
+                form.reportValidity();
+                return;
+            }
+            
+            // Animation sur soumission
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            // Simuler un délai d'envoi (2 secondes)
+            setTimeout(function() {
+                // Option 1: Rediriger directement vers merci.html
+                window.location.href = 'merci.html';
+                
+                // Option 2: Stocker les données dans localStorage pour affichage sur merci.html
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    date: new Date().toLocaleDateString('fr-FR')
+                };
+                localStorage.setItem('contactFormData', JSON.stringify(formData));
+                
+                // Rediriger
+                window.location.href = 'merci.html';
+            }, 2000);
+        });
+        
+        // Animation du bouton au survol
+        submitBtn.addEventListener('mouseenter', function() {
+            if (!this.disabled) {
+                this.style.transform = 'translateY(-2px)';
+            }
+        });
+        
+        submitBtn.addEventListener('mouseleave', function() {
+            if (!this.disabled) {
+                this.style.transform = 'translateY(0)';
+            }
+        });
+    });
+    
+    // Animation supplémentaire pour les champs de formulaire
+    document.querySelectorAll('.form-control').forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            if (this.value === '') {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+    });
+</script>
+</body>
+</html>
