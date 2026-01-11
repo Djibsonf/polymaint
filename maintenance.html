@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance - PolyMaint</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo1.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* ===== STYLES SPÉCIFIQUES MAINTENANCE ===== */
+    
+    /* Hero section avec carousel en fond */
+    .hero-maintenance {
+        margin-top: 80px;
+        padding: 100px 0;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Conteneur pour les images avec superposition */
+    .maintenance-carousel-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    
+    /* Images superposées - format portrait - Overlay plus clair pour équipe */
+    .maintenance-carousel-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+    }
+    
+    /* Première image */
+    .maintenance-img-1 {
+        background-image: url('img/maint1.jpeg');
+        opacity: 1; /* Par défaut visible */
+        animation: fadeMaintenance1 24s infinite;
+    }
+    
+    /* Deuxième image */
+    .maintenance-img-2 {
+        background-image: url('img/maint2.jpeg');
+        animation: fadeMaintenance2 24s infinite;
+    }
+    
+    /* Troisième image */
+    .maintenance-img-3 {
+        background-image: url('img/maint3.jpeg');
+        animation: fadeMaintenance3 24s infinite;
+    }
+    
+    /* Animation pour la première image */
+    @keyframes fadeMaintenance1 {
+        0%, 28% {
+            opacity: 1;
+        }
+        33%, 100% {
+            opacity: 0;
+        }
+    }
+    
+    /* Animation pour la deuxième image */
+    @keyframes fadeMaintenance2 {
+        0%, 28% {
+            opacity: 0;
+        }
+        33%, 61% {
+            opacity: 1;
+        }
+        66%, 100% {
+            opacity: 0;
+        }
+    }
+    
+    /* Animation pour la troisième image */
+    @keyframes fadeMaintenance3 {
+        0%, 61% {
+            opacity: 0;
+        }
+        66%, 94% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    
+    /* Overlay PLUS CLAIR pour mieux voir l'équipe */
+    .hero-maintenance-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+        z-index: -1;
+    }
+    
+    /* "Pôle Maintenance" en BLANC */
+    .hero-maintenance h1 {
+        color: white !important;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* "Garantir la performance..." en ORANGE */
+    .hero-maintenance .lead {
+        color: #FF9800 !important; /* Orange du logo */
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 600;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Section principale */
+    .maintenance-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+    
+    .section-title {
+        color: #FF9800;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #00ACC1;
+    }
+    
+    /* Carte de présentation */
+    .presentation-card {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-left: 5px solid #FF9800;
+    }
+    
+    .presentation-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 152, 0, 0.1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+    
+    .presentation-icon i {
+        font-size: 2.5rem;
+        color: #FF9800;
+    }
+    
+    /* Cartes de services */
+    .service-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.5rem;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-top: 5px solid #00ACC1;
+        transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+        color: #FF9800;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-card h3 {
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .service-card h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: #FF9800;
+    }
+    
+    /* Types de maintenance - DESIGN AMÉLIORÉ */
+    .maintenance-type-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        border-top: 4px solid transparent;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .maintenance-type-card .prestation-list li i {
+    margin-right: 10px;
+    margin-top: 3px;
+    font-size: 0.9rem;
+}
+.preventive-icon ~ .prestation-list li i {
+    color: #28a745 !important; /* Vert */
+}
+.curative-icon ~ .prestation-list li i {
+    color: #007bff !important; /* Bleu */
+}
+.performance-icon ~ .prestation-list li i {
+    color: #ffc107 !important; /* Orange */
+}
+.corrective-icon ~ .prestation-list li i {
+    color: #6f42c1 !important; /* Violet */
+}
+.prestation-list li i {
+    margin-right: 10px;
+    margin-top: 3px;
+    font-size: 0.9rem;
+}
+.atout-icon {
+    font-size: 2.2rem;
+    color: #FF9800;
+    margin-bottom: 1rem;
+}
+    .maintenance-type-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #FF9800, #00ACC1);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+    
+    .maintenance-type-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    .maintenance-type-card:hover::before {
+        transform: scaleX(1);
+    }
+    
+    .maintenance-type-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        color: white;
+    }
+    
+    .preventive-icon {
+        background: linear-gradient(135deg, #28a745, #20c997);
+    }
+    
+    .curative-icon {
+        background: linear-gradient(135deg, #007bff, #17a2b8);
+    }
+    
+    .performance-icon {
+        background: linear-gradient(135deg, #ffc107, #fd7e14);
+    }
+    
+    .corrective-icon {
+        background: linear-gradient(135deg, #6f42c1, #e83e8c);
+    }
+    
+    .maintenance-type-card h4 {
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+    
+    .maintenance-type-card p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    /* Nos atouts - CENTRÉS */
+    .atouts-section {
+        margin-top: 4rem;
+        padding-top: 4rem;
+        border-top: 2px solid #eee;
+        text-align: center;
+    }
+    
+    .atout-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.8rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-left: 4px solid #FF9800;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .atout-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .atout-icon {
+        font-size: 2.2rem;
+        color: #FF9800;
+        margin-bottom: 1rem;
+    }
+    
+    .atout-card h4 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
+    }
+    
+    .atout-card p {
+        color: #666;
+        margin-bottom: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    /* CTA section */
+    .cta-maintenance {
+        background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(0, 172, 193, 0.1));
+        padding: 60px 0;
+        border-radius: 15px;
+        margin: 4rem 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-maintenance {
+            padding: 60px 0;
+            margin-top: 70px;
+            min-height: 300px;
+        }
+        
+        .hero-maintenance h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-maintenance .lead {
+            font-size: 1.2rem;
+        }
+        
+        .maintenance-section {
+            padding: 60px 0;
+        }
+        
+        .presentation-card {
+            padding: 2rem;
+        }
+        
+        .service-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .maintenance-type-card {
+            padding: 1.5rem;
+        }
+        
+        .maintenance-type-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-maintenance {
+            padding: 50px 0;
+            min-height: 250px;
+        }
+        
+        .hero-maintenance h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-maintenance .lead {
+            font-size: 1.1rem;
+        }
+        
+        .maintenance-section {
+            padding: 50px 0;
+        }
+        
+        .presentation-card,
+        .service-card {
+            padding: 1.5rem;
+        }
+        
+        .presentation-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .presentation-icon i {
+            font-size: 2rem;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER STYLÉ ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+      <div class="container">
+        <!-- Logo dans la navbar avec texte -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
+          <div class="d-flex flex-column">
+            <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
+            <small class="text-muted fw-light" style="font-size: 0.7rem; line-height: 1.1;">au service de vos équipements</small>
+          </div>
+        </a>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Accueil -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Accueil
+              </a>
+            </li>
+
+            <!-- Nos Domaines -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-layer-group me-1"></i>Nos Domaines
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electronique et Electricité</a></li>
+              </ul>
+            </li>
+
+            <!-- Nos Services -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-cogs me-1"></i>Nos Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="conseil.html"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item active" href="maintenance.html"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+              </ul>
+            </li>
+
+            <!-- À Propos -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="apropos.html">
+                <i class="fas fa-info-circle me-1"></i>À Propos
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="contact.html">
+                <i class="fas fa-envelope me-1"></i>Contact
+              </a>
+            </li>
+
+            <!-- WhatsApp CTA -->
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-whatsapp px-4" href="https://wa.me/221778401549" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-maintenance">
+    <!-- Carousel en arrière-plan SANS FOND GRIS -->
+    <div class="maintenance-carousel-container">
+      <!-- Les trois images superposées -->
+      <div class="maintenance-carousel-img maintenance-img-1"></div>
+      <div class="maintenance-carousel-img maintenance-img-2"></div>
+      <div class="maintenance-carousel-img maintenance-img-3"></div>
+    </div>
+    
+    <!-- Overlay PLUS CLAIR pour mieux voir l'équipe -->
+    <div class="hero-maintenance-overlay"></div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="display-4 fw-bold mb-3">Pôle Maintenance</h1>
+          <p class="lead mb-4">Garantir la performance et la durabilité de vos équipements</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION MAINTENANCE ===== -->
+  <section class="maintenance-section" id="maintenance">
+    <div class="container">
+      <!-- Présentation -->
+      <div class="presentation-card">
+        <div class="presentation-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h2 class="section-title">Notre expertise en maintenance</h2>
+        <p class="mb-4">
+          Le pôle Maintenance de PolyMaint assure la performance, la sécurité et la longévité de vos équipements techniques. Nous intervenons dans tous les domaines avec une approche préventive, curative et corrective pour minimiser les temps d'arrêt et optimiser vos investissements.
+        </p>
+        <p class="mb-0">
+          Notre équipe de techniciens certifiés intervient avec réactivité et professionnalisme, en respectant les normes les plus strictes et en utilisant des outils de diagnostic performants.
+        </p>
+      </div>
+      
+      <!-- Types de maintenance - 4 cartes en 2 colonnes -->
+      <div class="row mb-5">
+        <div class="col-lg-12">
+          <h2 class="section-title text-center mb-5">Types de maintenance</h2>
+        </div>
+        
+        <!-- Première ligne : 2 cartes en haut -->
+        <div class="col-lg-6 mb-4">
+          <!-- Maintenance préventive -->
+          <div class="maintenance-type-card">
+            <div class="maintenance-type-icon preventive-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h4>Maintenance préventive</h4>
+            <p class="mb-3">Planning d'entretien rigoureux pour maintenir les équipements en parfait état de fonctionnement.</p>
+            <ul class="prestation-list">
+              <li><i class="fas fa-check"></i> Planning d'entretien programmé</li>
+              <li><i class="fas fa-check"></i> Vérification systématique des équipements</li>
+              <li><i class="fas fa-check"></i> Optimisation continue des performances</li>
+              <li><i class="fas fa-check"></i> Contrôles périodiques et préventifs</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <!-- Maintenance curative -->
+          <div class="maintenance-type-card">
+            <div class="maintenance-type-icon curative-icon">
+              <i class="fas fa-wrench"></i>
+            </div>
+            <h4>Maintenance curative</h4>
+            <p class="mb-3">Interventions rapides et efficaces en cas de panne pour rétablir la production dans les plus brefs délais.</p>
+            <ul class="prestation-list">
+              <li><i class="fas fa-check"></i> Interventions rapides en cas de panne</li>
+              <li><i class="fas fa-check"></i> Diagnostic et dépannage express</li>
+              <li><i class="fas fa-check"></i> Résolution des dysfonctionnements</li>
+              <li><i class="fas fa-check"></i> Remise en service rapide</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Deuxième ligne : 2 cartes en bas -->
+        <div class="col-lg-6 mb-4">
+          <!-- Suivi de performance -->
+          <div class="maintenance-type-card">
+            <div class="maintenance-type-icon performance-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4>Suivi de performance</h4>
+            <p class="mb-3">Monitoring et analyse des performances pour une maintenance optimisée et des décisions éclairées.</p>
+            <ul class="prestation-list">
+              <li><i class="fas fa-check"></i> Rapports d'activité détaillés</li>
+              <li><i class="fas fa-check"></i> Tableaux de bord de performance</li>
+              <li><i class="fas fa-check"></i> Indicateurs de disponibilité</li>
+              <li><i class="fas fa-check"></i> Analyses de tendances</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <!-- Maintenance corrective -->
+          <div class="maintenance-type-card">
+            <div class="maintenance-type-icon corrective-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h4>Maintenance corrective</h4>
+            <p class="mb-3">Améliorations et optimisations pour augmenter la fiabilité et les performances des équipements.</p>
+            <ul class="prestation-list">
+              <li><i class="fas fa-check"></i> Remplacement de pièces défectueuses</li>
+              <li><i class="fas fa-check"></i> Amélioration des processus</li>
+              <li><i class="fas fa-check"></i> Mise à niveau des équipements</li>
+              <li><i class="fas fa-check"></i> Optimisation des configurations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section NOS ATOUTS - CENTRÉS -->
+      <div class="atouts-section">
+        <h2 class="section-title text-center mb-5">Nos atouts</h2>
+        
+        <div class="row">
+          <!-- Première ligne : 2 atouts en haut -->
+          <div class="col-md-6 mb-4">
+            <div class="atout-card">
+              <div class="atout-icon">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <h4>Équipe qualifiée</h4>
+              <p>Techniciens expérimentés et régulièrement formés aux dernières technologies et normes en vigueur.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 mb-4">
+            <div class="atout-card">
+              <div class="atout-icon">
+                <i class="fas fa-toolbox"></i>
+              </div>
+              <h4>Outils performants</h4>
+              <p>Outils de diagnostic de pointe et documentation technique complète pour des interventions efficaces.</p>
+            </div>
+          </div>
+          
+          <!-- Deuxième ligne : 2 atouts en bas -->
+          <div class="col-md-6 mb-4">
+            <div class="atout-card">
+              <div class="atout-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4>Réactivité optimale</h4>
+              <p>Réactivité grâce à notre proximité géographique et notre organisation agile pour une intervention rapide.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 mb-4">
+            <div class="atout-card">
+              <div class="atout-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h4>Accompagnement personnalisé</h4>
+              <p>Suivi personnalisé et service sur-mesure adapté à vos contraintes opérationnelles et budgétaires.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA section -->
+      <div class="cta-maintenance">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h2 class="section-title mb-3">Besoin d'une intervention maintenance ?</h2>
+              <p class="lead mb-0">Notre équipe technique est disponible pour garantir le bon fonctionnement de vos équipements.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <a href="contact.html" class="btn btn-send btn-lg">
+                <i class="fas fa-phone me-2"></i>Demander une intervention
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand mb-3">
+            <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
+          </div>
+          <p class="text-light mb-4">
+            Votre partenaire pour une maintenance fiable et durable. 
+            Nous offrons des solutions techniques complètes pour tous vos équipements.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/Bme.sn" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/polymaint_suarl/" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/polymaint/posts/?feedView=all" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="text-white fs-5">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="apropos.html#mission" class="text-light text-decoration-none">Notre mission</a></li>
+            <li class="mb-2"><a href="apropos.html#equipe" class="text-light text-decoration-none">Notre équipe</a></li>
+            <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="genie-biomedical.html" class="text-light text-decoration-none">Génie Biomédical</a></li>
+            <li class="mb-2"><a href="industrie-automatisme.html" class="text-light text-decoration-none">Industrie & Automatisme</a></li>
+            <li class="mb-2"><a href="froid-climatisation.html" class="text-light text-decoration-none">Froid & Climatisation</a></li>
+            <li class="mb-2"><a href="informatique-telecom.html" class="text-light text-decoration-none">Informatique & Telecom</a></li>
+            <li><a href="electricite-electronique.html" class="text-light text-decoration-none">Électricité & Électronique</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-phone me-2 text-accent"></i>
+              <a href="tel:+221778401549" class="text-light text-decoration-none">+221 77 840 15 49</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:contact@polymaint.sn" class="text-light text-decoration-none">contact@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-globe me-2 text-accent"></i>
+              <a href="http://www.polymaint.sn" class="text-light text-decoration-none">www.polymaint.sn</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt me-2 text-accent"></i>
+              <span class="text-light">Dakar, Sénégal</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="bg-secondary my-4">
+      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2026 PolyMaint – Tous droits réservés. | Maintenance</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script pour animations -->
+  <script src="js/script.js"></script>
+  
+  <style>
+    .btn-send {
+        background: linear-gradient(135deg, #FF9800, #00ACC1);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
+    .btn-send:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 152, 0, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+  </style>
+</body>
+</html>
