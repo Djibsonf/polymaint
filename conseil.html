@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conseil - PolyMaint</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo1.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* ===== STYLES SPÉCIFIQUES CONSEIL ===== */
+    
+    /* Hero section avec carousel en fond */
+    .hero-conseil {
+        margin-top: 80px;
+        padding: 100px 0;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Conteneur pour les images avec superposition */
+    .conseil-carousel-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    
+    /* Images superposées */
+    .conseil-carousel-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+    }
+    
+    /* Première image */
+    .conseil-img-1 {
+        background-image: url('img/conseil1.jpg');
+        opacity: 1; /* Par défaut visible */
+        animation: fadeConseil1 16s infinite;
+    }
+    
+    /* Deuxième image */
+    .conseil-img-2 {
+        background-image: url('img/conseil2.jpg');
+        animation: fadeConseil2 16s infinite;
+    }
+    
+    /* Animation pour la première image */
+    @keyframes fadeConseil1 {
+        0%, 50% {
+            opacity: 1;
+        }
+        55%, 100% {
+            opacity: 0;
+        }
+    }
+    
+    /* Animation pour la deuxième image */
+    @keyframes fadeConseil2 {
+        0%, 50% {
+            opacity: 0;
+        }
+        55%, 100% {
+            opacity: 1;
+        }
+    }
+    
+    .hero-conseil-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
+        z-index: -1;
+    }
+    
+    /* "Pôle Conseil" en BLANC */
+    .hero-conseil h1 {
+        color: white !important;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* "Accompagnement stratégique..." en ORANGE */
+    .hero-conseil .lead {
+        color: #FF9800 !important; /* Orange du logo */
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 600;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* Section principale */
+    .conseil-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+    
+    .section-title {
+        color: #FF9800;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #00ACC1;
+    }
+    
+    /* Carte de présentation */
+    .presentation-card {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-left: 5px solid #FF9800;
+    }
+    
+    .presentation-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 152, 0, 0.1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+    
+    .presentation-icon i {
+        font-size: 2.5rem;
+        color: #FF9800;
+    }
+    
+    /* Cartes de services */
+    .service-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.5rem;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-top: 5px solid #00ACC1;
+        transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+        color: #FF9800;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-card h3 {
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .service-card h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: #FF9800;
+    }
+    
+    /* Liste des prestations */
+    .prestation-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .prestation-list li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+        color: #555;
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .prestation-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .prestation-list li i {
+        color: #00ACC1;
+        margin-right: 10px;
+        margin-top: 3px;
+        font-size: 0.9rem;
+    }
+    
+    /* Avantages */
+    .advantage-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
+    
+    .advantage-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 172, 193, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1.5rem;
+        flex-shrink: 0;
+    }
+    
+    .advantage-icon i {
+        font-size: 1.5rem;
+        color: #00ACC1;
+    }
+    
+    .advantage-content h4 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .advantage-content p {
+        color: #666;
+        margin-bottom: 0;
+    }
+    
+    /* CTA section */
+    .cta-conseil {
+        background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(0, 172, 193, 0.1));
+        padding: 60px 0;
+        border-radius: 15px;
+        margin: 4rem 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-conseil {
+            padding: 60px 0;
+            margin-top: 70px;
+            min-height: 300px;
+        }
+        
+        .hero-conseil h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-conseil .lead {
+            font-size: 1.2rem;
+        }
+        
+        .conseil-section {
+            padding: 60px 0;
+        }
+        
+        .presentation-card {
+            padding: 2rem;
+        }
+        
+        .service-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .advantage-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .advantage-icon {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-conseil {
+            padding: 50px 0;
+            min-height: 250px;
+        }
+        
+        .hero-conseil h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-conseil .lead {
+            font-size: 1.1rem;
+        }
+        
+        .conseil-section {
+            padding: 50px 0;
+        }
+        
+        .presentation-card,
+        .service-card {
+            padding: 1.5rem;
+        }
+        
+        .presentation-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .presentation-icon i {
+            font-size: 2rem;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER STYLÉ ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+      <div class="container">
+        <!-- Logo dans la navbar avec texte -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
+          <div class="d-flex flex-column">
+            <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
+            <small class="text-muted fw-light" style="font-size: 0.7rem; line-height: 1.1;">au service de vos équipements</small>
+          </div>
+        </a>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Accueil -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Accueil
+              </a>
+            </li>
+
+            <!-- Nos Domaines -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-layer-group me-1"></i>Nos Domaines
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electronique et Electricité</a></li>
+              </ul>
+            </li>
+
+            <!-- Nos Services -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-cogs me-1"></i>Nos Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item active" href="conseil.html"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item" href="maintenance.html"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+              </ul>
+            </li>
+
+            <!-- À Propos -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="apropos.html">
+                <i class="fas fa-info-circle me-1"></i>À Propos
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="contact.html">
+                <i class="fas fa-envelope me-1"></i>Contact
+              </a>
+            </li>
+
+            <!-- WhatsApp CTA -->
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-whatsapp px-4" href="https://wa.me/221778401549" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-conseil">
+    <!-- Carousel en arrière-plan SANS FOND GRIS -->
+    <div class="conseil-carousel-container">
+      <!-- Les deux images superposées -->
+      <div class="conseil-carousel-img conseil-img-1"></div>
+      <div class="conseil-carousel-img conseil-img-2"></div>
+    </div>
+    
+    <div class="hero-conseil-overlay"></div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="display-4 fw-bold mb-3">Pôle Conseil</h1>
+          <p class="lead mb-4">Accompagnement stratégique et technique pour vos projets</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION CONSEIL ===== -->
+  <section class="conseil-section" id="conseil">
+    <div class="container">
+      <!-- Présentation -->
+      <div class="presentation-card">
+        <div class="presentation-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h2 class="section-title">Notre expertise en conseil</h2>
+        <p class="mb-4">
+          Le pôle Conseil de PolyMaint guide les entreprises et institutions dans la définition, la planification et l'optimisation de leurs projets techniques. Nos experts s'engagent à fournir des recommandations pertinentes, personnalisées et conformes aux meilleures pratiques du secteur.
+        </p>
+        <p class="mb-0">
+          Que vous soyez une PME, une grande entreprise ou une institution publique, notre équipe d'experts vous accompagne dans la réussite de vos projets techniques grâce à une approche méthodique et sur-mesure.
+        </p>
+      </div>
+      
+      <div class="row mb-5">
+        <!-- Conseils et prestations -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3>Nos prestations de conseil</h3>
+            <ul class="prestation-list">
+              <li><i class="fas fa-check"></i> Étude de faisabilité et diagnostic technique</li>
+              <li><i class="fas fa-check"></i> Assistance à maîtrise d'ouvrage (AMO) pour vos projets</li>
+              <li><i class="fas fa-check"></i> Rédaction de cahiers des charges et spécifications</li>
+              <li><i class="fas fa-check"></i> Analyse des risques et recommandations techniques</li>
+              <li><i class="fas fa-check"></i> Optimisation des coûts et choix technologiques</li>
+              <li><i class="fas fa-check"></i> Audit des installations existantes</li>
+              <li><i class="fas fa-check"></i> Conseils en normes et réglementations</li>
+              <li><i class="fas fa-check"></i> Planification et gestion de projet technique</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Avantages -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Pourquoi faire appel à nous ?</h3>
+            
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <div class="advantage-content">
+                <h4>Approche sur-mesure</h4>
+                <p>Une méthodologie orientée résultats, adaptée à vos besoins spécifiques.</p>
+              </div>
+            </div>
+            
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="advantage-content">
+                <h4>Experts pluridisciplinaires</h4>
+                <p>Une équipe d'experts dans différents domaines techniques à votre écoute.</p>
+              </div>
+            </div>
+            
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="advantage-content">
+                <h4>Veille technologique</h4>
+                <p>Une veille permanente sur les dernières innovations et bonnes pratiques.</p>
+              </div>
+            </div>
+            
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="advantage-content">
+                <h4>Livrables clairs</h4>
+                <p>Des rapports, études et recommandations structurés et immédiatement exploitables.</p>
+              </div>
+            </div>
+            
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div class="advantage-content">
+                <h4>Accompagnement continu</h4>
+                <p>Un suivi personnalisé tout au long de votre projet, de l'étude à la mise en œuvre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA section -->
+      <div class="cta-conseil">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h2 class="section-title mb-3">Prêt à concrétiser vos projets ?</h2>
+              <p class="lead mb-0">Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets techniques.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <a href="contact.html" class="btn btn-send btn-lg">
+                <i class="fas fa-paper-plane me-2"></i>Demander un conseil
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand mb-3">
+            <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
+          </div>
+          <p class="text-light mb-4">
+            Votre partenaire pour une maintenance fiable et durable. 
+            Nous offrons des solutions techniques complètes pour tous vos équipements.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/Bme.sn" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/polymaint_suarl/" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/polymaint/posts/?feedView=all" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="text-white fs-5">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="apropos.html#mission" class="text-light text-decoration-none">Notre mission</a></li>
+            <li class="mb-2"><a href="apropos.html#equipe" class="text-light text-decoration-none">Notre équipe</a></li>
+            <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="genie-biomedical.html" class="text-light text-decoration-none">Génie Biomédical</a></li>
+            <li class="mb-2"><a href="industrie-automatisme.html" class="text-light text-decoration-none">Industrie & Automatisme</a></li>
+            <li class="mb-2"><a href="froid-climatisation.html" class="text-light text-decoration-none">Froid & Climatisation</a></li>
+            <li class="mb-2"><a href="informatique-telecom.html" class="text-light text-decoration-none">Informatique & Telecom</a></li>
+            <li><a href="electricite-electronique.html" class="text-light text-decoration-none">Électricité & Électronique</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-phone me-2 text-accent"></i>
+              <a href="tel:+221778401549" class="text-light text-decoration-none">+221 77 840 15 49</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:contact@polymaint.sn" class="text-light text-decoration-none">contact@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-globe me-2 text-accent"></i>
+              <a href="http://www.polymaint.sn" class="text-light text-decoration-none">www.polymaint.sn</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt me-2 text-accent"></i>
+              <span class="text-light">Dakar, Sénégal</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="bg-secondary my-4">
+      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2026 PolyMaint – Tous droits réservés. | Conseil</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script pour animations -->
+  <script src="js/script.js"></script>
+  
+  <style>
+    .btn-send {
+        background: linear-gradient(135deg, #FF9800, #00ACC1);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
+    .btn-send:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 152, 0, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+  </style>
+</body>
+</html>
