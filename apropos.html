@@ -17,7 +17,7 @@
   <!-- CSS personnalisé -->
   <link rel="stylesheet" href="css/style.css">
   <style>
-   /* ===== STYLES SPÉCIFIQUES PAGE À PROPOS ===== */
+  /* ===== STYLES SPÉCIFIQUES PAGE À PROPOS ===== */
 
 /* Hero section avec images animées */
 .hero-about {
@@ -41,7 +41,7 @@
 
 /* Seulement "PolyMaint, c'est la rigueur technique..." en orange */
 .hero-about .lead {
-    color: #FF9800 !important; /* Orange du logo */
+    color: #FF9800 !important;
     font-weight: 600;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
@@ -94,9 +94,21 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     padding: 3rem;
     margin-bottom: 3rem;
-    border-left: 5px solid #FF9800;
     position: relative;
     z-index: 1;
+}
+
+/* Couleurs de bordure différentes pour chaque section */
+#mission .section-card {
+    border-left: 5px solid #FF9800;
+}
+
+#vision .section-card {
+    border-left: 5px solid #00ACC1;
+}
+
+#engagements .section-card {
+    border-left: 5px solid #FF9800;
 }
 
 .section-title {
@@ -159,6 +171,37 @@
     color: #FF9800;
 }
 
+/* ===== MODIFICATION DE LA DISPOSITION ===== */
+
+/* Notre Mission - garde la disposition actuelle (texte à gauche, image à droite) */
+#mission .row {
+    flex-direction: row;
+}
+
+/* Nos Engagements - texte à droite, image à gauche */
+#engagements .row {
+    flex-direction: row-reverse;
+}
+
+#engagements .section-card {
+    margin-left: 2rem;
+}
+
+/* Notre Vision - texte à gauche, image à droite */
+#vision .row {
+    flex-direction: row;
+}
+
+#vision .section-card {
+    margin-right: 2rem;
+}
+
+/* Suppression de l'ordre Bootstrap existant pour la vision */
+#vision .order-lg-1,
+#vision .order-lg-2 {
+    order: unset !important;
+}
+
 /* Team section */
 .team-section {
     background: #f8f9fa;
@@ -205,8 +248,23 @@
     margin-bottom: 1rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    /* Réorganisation des sections sur mobile */
+    #mission .row,
+    #engagements .row,
+    #vision .row {
+        flex-direction: column !important;
+    }
+    
+    #mission .section-card,
+    #engagements .section-card,
+    #vision .section-card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 2rem;
+    }
+    
     .hero-about {
         padding-top: 60px;
         padding-bottom: 60px;
@@ -231,7 +289,7 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .hero-about {
         padding-top: 50px;
         padding-bottom: 50px;
@@ -386,6 +444,32 @@
       </div>
     </div>
   </section>
+  
+  <!-- ===== NOS ENGAGEMENTS ===== -->
+  <section class="py-5 bg-white" id="engagements">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="section-card">
+            <div class="icon-box">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h2 class="section-title">Nos engagements</h2>
+            <p class="mb-4">PolyMaint s'engage sur la qualité, la sécurité et la réactivité. Nos équipes sont formées en continu pour garantir des interventions conformes aux normes les plus strictes.</p>
+            <p class="mb-0">Nous privilégions des solutions pérennes, des outils modernes et une communication fluide avec nos partenaires.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-image-container">
+            <img src="img/electrique.jpeg" alt="Nos engagements - Installation plomberie" class="about-image">
+          </div>
+          <div class="text-center">
+            <small class="text-muted">Installations électriques industrielles</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== NOTRE VISION ===== -->
   <section class="py-5 bg-light" id="vision">
@@ -403,33 +487,7 @@
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="about-image-container">
-            <img src="img/electrique.jpeg" alt="Notre vision - Installation électrique" class="about-image">
-          </div>
-          <div class="text-center">
-            <small class="text-muted">Installations électriques industrielles</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== NOS ENGAGEMENTS ===== -->
-  <section class="py-5 bg-white" id="engagements">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <div class="section-card">
-            <div class="icon-box">
-              <i class="fas fa-handshake"></i>
-            </div>
-            <h2 class="section-title">Nos engagements</h2>
-            <p class="mb-4">PolyMaint s'engage sur la qualité, la sécurité et la réactivité. Nos équipes sont formées en continu pour garantir des interventions conformes aux normes les plus strictes.</p>
-            <p class="mb-0">Nous privilégions des solutions pérennes, des outils modernes et une communication fluide avec nos partenaires.</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="about-image-container">
-            <img src="img/plomberie2.jpeg" alt="Nos engagements - Installation plomberie" class="about-image">
+            <img src="img/plomberie2.jpeg" alt="Notre vision - Installation électrique" class="about-image">
           </div>
           <div class="text-center">
             <small class="text-muted">Installations de plomberie industrielle</small>
@@ -438,6 +496,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- ===== NOS VALEURS ===== -->
   <section class="py-5 bg-light" id="valeurs">
