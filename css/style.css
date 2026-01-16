@@ -1025,4 +1025,52 @@ footer a.text-light:hover {
     }
 }
 
+/* ===== BOUTON EN SAVOIR PLUS - ANIMÉ DÉGRADÉ ===== */
+.btn-outline-accent {
+    color: #FF9800 !important;
+    border: 2px solid transparent !important;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(90deg, #FF9800, #00ACC1) border-box;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation au survol */
+.btn-outline-accent:hover {
+    color: white !important;
+    background: linear-gradient(90deg, #FF9800, #00ACC1) padding-box,
+                linear-gradient(90deg, #FF9800, #00ACC1) border-box;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+}
+
+/* Animation de la flèche */
+.btn-outline-accent i {
+    transition: transform 0.3s ease;
+}
+
+.btn-outline-accent:hover i {
+    transform: translateX(5px);
+}
+
+/* Effet d'onde au clic */
+.btn-outline-accent:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
+}
+
+/* Version dans les cartes domaines */
+.domain-card .btn-outline-accent {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.9rem;
+    border-width: 1.5px;
+}
 
