@@ -1041,15 +1041,20 @@ footer a.text-light:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu sur mobile */
 }
 
-/* Animation au survol */
-.btn-outline-accent:hover {
+/* Animation au survol ET au focus (pour mobile) */
+.btn-outline-accent:hover,
+.btn-outline-accent:focus,
+.btn-outline-accent:active {
     color: white !important;
     background: linear-gradient(90deg, #FF9800, #00ACC1) padding-box,
                 linear-gradient(90deg, #FF9800, #00ACC1) border-box;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+    outline: none; /* Supprime le contour bleu par défaut */
 }
 
 /* Animation de la flèche */
@@ -1057,14 +1062,28 @@ footer a.text-light:hover {
     transition: transform 0.3s ease;
 }
 
-.btn-outline-accent:hover i {
+/* Flèche animée sur hover ET focus */
+.btn-outline-accent:hover i,
+.btn-outline-accent:focus i,
+.btn-outline-accent:active i {
     transform: translateX(5px);
 }
 
 /* Effet d'onde au clic */
 .btn-outline-accent:active {
-    transform: translateY(0);
+    transform: translateY(-1px); /* Légèrement plus bas que hover */
     box-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
+}
+
+/* Effet de pulse sur mobile au toucher */
+@media (hover: none) and (pointer: coarse) {
+    .btn-outline-accent {
+        transition: transform 0.2s ease, background 0.3s ease;
+    }
+    
+    .btn-outline-accent:active {
+        transform: scale(0.98); /* Effet de pression sur mobile */
+    }
 }
 
 /* Version dans les cartes domaines */
@@ -1074,3 +1093,18 @@ footer a.text-light:hover {
     border-width: 1.5px;
 }
 
+/* Animation de fond au survol (optionnel) */
+.btn-outline-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.btn-outline-accent:hover::before {
+    left: 100%;
+}
