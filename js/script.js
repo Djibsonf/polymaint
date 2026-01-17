@@ -37,30 +37,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        // Ne pas appliquer le smooth scroll aux liens qui pointent vers d'autres pages
+        if (!anchor.getAttribute('href').includes('.html')) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 
-                // Fermer le menu mobile si ouvert
-                const navbarToggler = document.querySelector('.navbar-toggler');
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
-                    navbarToggler.click();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Mettre à jour l'URL sans rechargement
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    }
+                    
+                    // Mettre à jour l'état actif
+                    updateActiveNav();
+                    
+                    // Fermer le menu mobile si ouvert
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
                 }
-            }
-        });
+            });
+        }
     });
     
     // ===== ANIMATION DES STATISTIQUES =====
@@ -160,26 +171,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ===== NAVIGATION ACTIVE =====
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}` || 
-                (current === '' && link.getAttribute('href') === 'index.html')) {
-                link.classList.add('active');
-            }
-        });
+    // ===== GESTION DE L'ÉTAT ACTIF DE LA NAVBAR =====
+
+function clearActiveNav() {
+    document.querySelectorAll('.navbar-nav a').forEach(link => {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
     });
+}
+
+function activateLink(link) {
+    if (!link) return;
+
+    link.classList.add('active');
+    link.setAttribute('aria-current', 'page');
+
+    // Activer le parent dropdown si nécessaire
+    const dropdownMenu = link.closest('.dropdown-menu');
+    if (dropdownMenu) {
+        const toggle = dropdownMenu.parentElement.querySelector('.dropdown-toggle');
+        if (toggle) {
+            toggle.classList.add('active');
+            toggle.setAttribute('aria-current', 'page');
+        }
+    }
+}
+
+function updateActiveNav() {
+    // Ne pas clearActiveNav ici, pour que le carré bleu reste actif
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+
+    if (page === 'index.html') {
+        // On scroll dans index.html, activer la section
+        const scrollPos = window.scrollY + 120;
+        const sections = document.querySelectorAll('section[id]');
+        let currentSection = null;
+
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+            if (scrollPos >= top && scrollPos < bottom) {
+                currentSection = section.id;
+            }
+        });
+
+        if (currentSection) {
+            activateLink(document.querySelector(`.navbar-nav a[href="#${currentSection}"]`));
+        } else {
+            activateLink(document.querySelector('.navbar-nav a[href="index.html"]'));
+        }
+    } else {
+        // Autres pages
+        const link = document.querySelector(`.navbar-nav a[href="${page}"]`);
+        activateLink(link);
+    }
+}
+
+// ===== SCROLL (uniquement pour index.html) =====
+window.addEventListener('scroll', () => {
+    if (window.location.pathname.split('/').pop() === 'index.html') {
+        updateActiveNav();
+    }
+});
+
+// ===== CLIC NAVBAR =====
+document.querySelectorAll('.navbar-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        activateLink(link); // Ne plus clearActiveNav pour que ça reste actif
+    });
+});
+
+// ===== INIT =====
+window.addEventListener('load', updateActiveNav);
+window.addEventListener('popstate', updateActiveNav);
+
 });
