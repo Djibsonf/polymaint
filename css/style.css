@@ -1028,9 +1028,8 @@ footer a.text-light:hover {
 /* ===== BOUTON EN SAVOIR PLUS - ANIMÉ DÉGRADÉ ===== */
 .btn-outline-accent {
     color: #FF9800 !important;
-    border: 2px solid transparent !important;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(90deg, #FF9800, #00ACC1) border-box;
+    border: 2px solid #FF9800 !important;
+    background: white !important;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
@@ -1040,71 +1039,77 @@ footer a.text-light:hover {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu sur mobile */
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Animation au survol ET au focus (pour mobile) */
-.btn-outline-accent:hover,
-.btn-outline-accent:focus,
-.btn-outline-accent:active {
+/* Pour tous les appareils : au toucher/clic */
+.btn-outline-accent:active,
+.btn-outline-accent.active {
     color: white !important;
-    background: linear-gradient(90deg, #FF9800, #00ACC1) padding-box,
-                linear-gradient(90deg, #FF9800, #00ACC1) border-box;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
-    outline: none; /* Supprime le contour bleu par défaut */
+    background: linear-gradient(90deg, #FF9800, #00ACC1) !important;
+    border-color: transparent !important;
+    transform: scale(0.98);
+}
+
+/* Pour PC seulement : hover */
+@media (hover: hover) {
+    .btn-outline-accent:hover {
+        color: white !important;
+        background: linear-gradient(90deg, #FF9800, #00ACC1) !important;
+        border-color: transparent !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+    }
+    
+    .btn-outline-accent:hover i {
+        transform: translateX(5px);
+    }
 }
 
 /* Animation de la flèche */
 .btn-outline-accent i {
     transition: transform 0.3s ease;
-}
-
-/* Flèche animée sur hover ET focus */
-.btn-outline-accent:hover i,
-.btn-outline-accent:focus i,
-.btn-outline-accent:active i {
-    transform: translateX(5px);
-}
-
-/* Effet d'onde au clic */
-.btn-outline-accent:active {
-    transform: translateY(-1px); /* Légèrement plus bas que hover */
-    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
-}
-
-/* Effet de pulse sur mobile au toucher */
-@media (hover: none) and (pointer: coarse) {
-    .btn-outline-accent {
-        transition: transform 0.2s ease, background 0.3s ease;
-    }
-    
-    .btn-outline-accent:active {
-        transform: scale(0.98); /* Effet de pression sur mobile */
-    }
+    margin-left: 5px;
 }
 
 /* Version dans les cartes domaines */
 .domain-card .btn-outline-accent {
     padding: 0.4rem 1.2rem;
     font-size: 0.9rem;
-    border-width: 1.5px;
 }
 
-/* Animation de fond au survol (optionnel) */
-.btn-outline-accent::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.7s ease;
+/* Styles pour les cartes de témoignages */
+.testimonial-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-top: 4px solid #FF9800;
+  transition: all 0.3s ease;
 }
 
-.btn-outline-accent:hover::before {
-    left: 100%;
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.testimonial-header {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.testimonial-body {
+  padding-top: 1rem;
+  font-style: italic;
+  color: #555;
+  line-height: 1.6;
+}
+
+.client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
 }
