@@ -52,6 +52,7 @@
         height: 100%;
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 1.5s ease-in-out;
     }
@@ -60,6 +61,7 @@
     .conseil-img-1 {
         background-image: url('img/conseil1.jpg');
         opacity: 1; /* Par défaut visible */
+        background-position: center 18%;
         animation: fadeConseil1 16s infinite;
     }
     
@@ -71,11 +73,11 @@
     
     /* Animation pour la première image */
     @keyframes fadeConseil1 {
-        0%, 50% {
+        0%, 70% {
             opacity: 1;
         }
-        55%, 100% {
-            opacity: 0;
+        75%, 100% {
+            opacity: 0.9;
         }
     }
     
