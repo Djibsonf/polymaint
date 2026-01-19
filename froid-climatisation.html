@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Froid & Climatisation - PolyMaint</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo1.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+ /* ===== CARROUSEL DIRECT APRÈS LE HEADER ===== */
+body {
+    padding-top: 0 !important;
+}
+
+.navbar.fixed-top {
+    z-index: 1030;
+}
+
+.hero-section-direct {
+    position: relative;
+    margin-top: 0;
+    height: 70vh;
+    min-height: 500px;
+    overflow: hidden;
+    color: white;
+}
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item {
+    height: 100%;
+}
+
+.hero-carousel .carousel-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* Overlay léger pour améliorer la lisibilité */
+.hero-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+/* Images locales pour Froid & Climatisation */
+.hero-carousel .carousel-item:nth-child(1) {
+    background-image: url('img/froid.jpg');
+    background-position: center center;
+}
+
+.hero-carousel .carousel-item:nth-child(2) {
+    background-image: url('img/froid2.jpg');
+    background-position: center center;
+}
+
+.hero-carousel .carousel-item:nth-child(3) {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                      url('img/froid.jpg');
+    background-position: center center;
+}
+
+/* Contenu - aligné à gauche */
+.hero-content-direct {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+/* Texte à gauche */
+.hero-text-left {
+    max-width: 700px;
+    text-align: left;
+    padding-right: 10px; /* Espace pour l'icône sur desktop */
+}
+
+/* Titre en blanc */
+.hero-main-title-direct {
+    font-size: 3rem;          /* un peu plus petit qu'avant */
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    white-space: nowrap;     /* reste sur une ligne */
+    overflow: visible;      /* plus de coupe */
+}
+
+/* Sous-titre en orange (#FF9800) */
+.hero-subtitle-direct {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #FF9800 !important;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    white-space: nowrap;
+}
+
+/* Texte justifié en blanc avec bonne lisibilité */
+.hero-text-justified {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: white;
+    max-width: 600px; /* Limiter la largeur */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    font-weight: 400;
+}
+
+/* Icône à droite - position plus basse */
+.hero-icon-right {
+    position: absolute;
+    right: 5%;
+    top: 65%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.hero-icon-direct {
+    color: #FF9800;
+    font-size: 8rem;
+    opacity: 0.7;
+    animation: pulse 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.4));
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: translateY(-50%) scale(1); 
+        opacity: 0.7; 
+    }
+    50% { 
+        transform: translateY(-50%) scale(1.05); 
+        opacity: 0.9; 
+    }
+}
+
+/* Bouton */
+.hero-btn-direct {
+    background-color: #FF9800 !important;
+    border: none !important;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white !important;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+.hero-btn-direct:hover {
+    background-color: #00ACC1 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Cacher les contrôles */
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next,
+.hero-carousel .carousel-indicators {
+    display: none;
+}
+
+/* ===== RESPONSIVE SIMPLE ET FONCTIONNEL ===== */
+@media (max-width: 1200px) {
+    .hero-icon-direct {
+        font-size: 10rem;
+        right: 3%;
+    }
+    
+    .hero-text-left {
+        padding-right: 80px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section-direct {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .hero-content-direct {
+        padding-top: 120px;
+    }
+    
+    .hero-main-title-direct {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle-direct {
+        font-size: 1.3rem;
+    }
+    
+    .hero-text-justified {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    /* SUR TABLETTE - L'icône passe en dessous du texte */
+    .hero-icon-direct {
+        font-size: 6rem;
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        margin-top: 2rem;
+        text-align: center;
+        order: 3; /* Met l'icône en dernier */
+    }
+    
+    .hero-icon-right {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        text-align: center;
+        margin-top: 2rem;
+        order: 3; /* Met l'icône en dernier */
+    }
+    
+    .hero-text-left {
+        padding-right: 0; /* Supprime l'espace pour l'icône */
+        order: 1; /* Met le texte en premier */
+    }
+    
+    .hero-content-direct {
+        flex-direction: column; /* Passe en colonne */
+        justify-content: center;
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section-direct {
+        height: auto; /* Hauteur auto pour s'adapter */
+        min-height: 400px;
+        padding: 80px 0 40px 0;
+    }
+    
+    .hero-content-direct {
+        padding-top: 60px;
+        height: auto;
+    }
+    
+    .hero-main-title-direct {
+        font-size: 2rem;
+        text-align: center; /* Centre le titre sur mobile */
+    }
+    
+    .hero-subtitle-direct {
+        font-size: 1.1rem;
+        text-align: center; /* Centre le sous-titre sur mobile */
+    }
+    
+    .hero-text-justified {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center; /* Centre le texte sur mobile */
+        max-width: 100%;
+        padding: 0 15px; /* Ajoute du padding sur les côtés */
+    }
+    
+    .hero-icon-direct {
+        font-size: 4rem;
+        margin-top: 1rem;
+    }
+    
+    .hero-text-left {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-btn-direct {
+        display: block;
+        margin: 0 auto; /* Centre le bouton */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section-direct {
+        min-height: 350px;
+        padding: 70px 0 30px 0;
+    }
+    
+    .hero-main-title-direct {
+        font-size: 1.8rem;
+    }
+    
+    .hero-text-justified {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+    
+    .hero-icon-direct {
+        font-size: 3.5rem;
+    }
+}
+
+/* ===== STYLES SPÉCIFIQUES FROID & CLIMATISATION ===== */
+
+/* Cartes d'expertise */
+.expertise-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    height: 100%;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-left: 4px solid #FF9800;
+}
+
+.expertise-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carte de contenu */
+.content-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-left: 5px solid #FF9800;
+}
+
+/* Galerie */
+.gallery-item {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.placeholder-image {
+    background: linear-gradient(135deg, #00ACC1, #00838F);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge pour les nouvelles technologies */
+.tech-badge {
+    background: linear-gradient(135deg, #FF9800, #FF5722);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Responsive pour les sections */
+@media (max-width: 768px) {
+    .expertise-card {
+        margin-bottom: 20px;
+    }
+    
+    .content-card {
+        padding: 1.5rem !important;
+    }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER STYLÉ ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+      <div class="container">
+        <!-- Logo dans la navbar avec texte -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
+          <div class="d-flex flex-column">
+            <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
+            <small class="text-muted fw-light" style="font-size: 0.7rem; line-height: 1.1;">au service de vos équipements</small>
+          </div>
+        </a>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Accueil -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Accueil
+              </a>
+            </li>
+
+            <!-- Nos Domaines -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-layer-group me-1"></i>Nos Domaines
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+                <li><a class="dropdown-item active" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electronique et Electricité</a></li>
+              </ul>
+            </li>
+
+            <!-- Nos Services -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-cogs me-1"></i>Nos Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="conseil.html"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item" href="maintenance.html"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+              </ul>
+            </li>
+
+            <!-- À Propos -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="apropos.html">
+                <i class="fas fa-info-circle me-1"></i>À Propos
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="contact.html">
+                <i class="fas fa-envelope me-1"></i>Contact
+              </a>
+            </li>
+
+            <!-- WhatsApp CTA -->
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-whatsapp px-4" href="https://wa.me/221778401549" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section-direct" id="hero">
+    <!-- Carrousel d'arrière-plan -->
+    <div class="hero-carousel">
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner">
+          <div class="carousel-item active"></div>
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Icône à droite (position absolue) -->
+    <div class="hero-icon-right">
+      <i class="fas fa-snowflake hero-icon-direct"></i>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content-direct">
+        <div class="hero-text-left">
+          <h1 class="hero-main-title-direct">Pôle Froid & Climatisation</h1>
+          <p class="hero-subtitle-direct">Confort thermique et performance énergétique sur mesure</p>
+          
+          <div class="hero-text-justified">
+            <p>Chez PolyMaint, notre pôle Froid & Climatisation intervient dans l'étude, l'installation, la maintenance et le dépannage de systèmes thermiques pour garantir la qualité de l'air, le confort et l'efficacité énergétique. Nous accompagnons entreprises, établissements publics, laboratoires et hôpitaux dans des solutions sur mesure.</p>
+          </div>
+          
+          <a href="contact.html" class="btn hero-btn-direct">
+            <i class="fas fa-phone-alt me-2"></i>Demander un devis
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERTISES ===== -->
+  <section class="py-5 bg-light" id="expertises">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title mb-3">Nos expertises</h2>
+          <p class="lead text-muted">Des solutions thermiques sur mesure pour tous vos besoins</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Froid Commercial & Industriel -->
+        <div class="col-md-4">
+          <div class="expertise-card p-4">
+            <div class="expertise-icon">
+              <i class="fas fa-temperature-low fa-2x" style="color: #FF9800;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Froid Commercial & Industriel</h3>
+            <p class="text-muted">Conception, installation et maintenance de chambres froides, vitrines réfrigérées, entrepôts frigorifiques pour divers secteurs.</p>
+          </div>
+        </div>
+
+        <!-- Climatisation Multisplit & VRV -->
+        <div class="col-md-4">
+          <div class="expertise-card p-4">
+            <div class="expertise-icon">
+             <i class="fas fa-snowflake fa-2x" style="color: #00ACC1;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Climatisation Multisplit & VRV</h3>
+            <p class="text-muted">Systèmes réversibles pour bureaux, hôtels et hôpitaux, incluant split, multisplit et VRV pour un confort sur mesure.</p>
+          </div>
+        </div>
+
+        <!-- Ventilation et Qualité de l'air -->
+        <div class="col-md-4">
+          <div class="expertise-card p-4">
+            <div class="expertise-icon">
+             <i class="fas fa-fan fa-2x" style="color: #FF9800;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Ventilation et Qualité de l'air</h3>
+            <p class="text-muted">Solutions de VMC, purification et contrôle d'hygrométrie pour garantir un air intérieur sain.</p>
+          </div>
+        </div>
+
+        <!-- Maintenance Thermique -->
+        <div class="col-md-4">
+          <div class="expertise-card p-4">
+            <div class="expertise-icon">
+              <i class="fas fa-tools fa-2x" style="color: #00ACC1;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Maintenance Thermique</h3>
+            <p class="text-muted">Suivi régulier, maintenance préventive et curative, et reporting technique pour optimiser la performance de vos installations.</p>
+          </div>
+        </div>
+
+        <!-- Études et Audits -->
+        <div class="col-md-4">
+          <div class="expertise-card p-4">
+            <div class="expertise-icon">
+              <i class="fas fa-clipboard-check fa-2x" style="color: #FF9800;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Études et Audits</h3>
+            <p class="text-muted">Audits énergétiques, dimensionnement, calcul des charges et recommandations pour améliorer l'efficacité énergétique.</p>
+          </div>
+        </div>
+
+        <!-- Pompes à chaleur -->
+        <div class="col-md-4">
+          <div class="expertise-card p-4">
+            <div class="expertise-icon">
+              <i class="fas fa-water fa-2x" style="color: #00ACC1;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Pompes à chaleur</h3>
+            <p class="text-muted">Solutions durables : PAC air/air, air/eau, géothermie et autres systèmes d'énergie renouvelable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTENU DÉTAILLÉ ===== -->
+  <section class="py-5" id="details">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="content-card p-5">
+            <h2 class="mb-4">Pourquoi choisir PolyMaint pour votre système thermique ?</h2>
+            <ul class="list-unstyled">
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Expertise certifiée</strong> : Techniciens qualifiés pour toutes marques</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Solution sur mesure</strong> : Étude personnalisée selon vos besoins</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Économies d'énergie</strong> : Optimisation des consommations</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Intervention rapide</strong> : Dépannage d'urgence 24h/24</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Conformité normative</strong> : Respect des normes en vigueur</li>
+              <li><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Maintenance préventive</strong> : Suivi régulier pour éviter les pannes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center">
+            <div class="placeholder-image rounded-3 mb-4" style="height: 300px;">
+              <i class="fas fa-snowflake fa-5x text-white opacity-75"></i>
+            </div>
+            <h3 class="h4 mb-3">Illustration Froid & Climatisation</h3>
+            <p class="text-muted">Des solutions thermiques adaptées à vos besoins spécifiques, du petit système résidentiel aux grandes installations industrielles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIE ===== -->
+  <section class="py-5 bg-light" id="galerie">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title mb-3">Nos réalisations</h2>
+          <p class="lead text-muted">Découvrez nos installations dans le domaine du froid et climatisation</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="gallery-item rounded-3 overflow-hidden shadow-sm position-relative">
+            <span class="tech-badge">Chantier</span>
+            <div class="placeholder-image d-flex align-items-center justify-content-center">
+              <i class="fas fa-hard-hat fa-4x text-white opacity-75"></i>
+            </div>
+            <div class="p-3 bg-white">
+              <p class="mb-0 fw-semibold">Photo chantier installation froid clim</p>
+              <small class="text-muted">Installation complète de système de climatisation</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="gallery-item rounded-3 overflow-hidden shadow-sm position-relative">
+            <span class="tech-badge">Moderne</span>
+            <div class="placeholder-image d-flex align-items-center justify-content-center">
+              <i class="fas fa-snowflake fa-4x text-white opacity-75"></i>
+            </div>
+            <div class="p-3 bg-white">
+              <p class="mb-0 fw-semibold">Photo système de climatisation moderne</p>
+              <small class="text-muted">Système dernier cri à haute efficacité énergétique</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="py-5" style="background: linear-gradient(135deg, #FF9800, #00ACC1);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center text-white">
+          <h2 class="mb-3">Besoin d'une solution thermique adaptée ?</h2>
+          <p class="lead mb-4">Contactez-nous pour une étude gratuite de vos besoins en froid et climatisation.</p>
+          <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+            <a href="tel:+221778401549" class="btn btn-light btn-lg px-4">
+              <i class="fas fa-phone me-2"></i>+221 77 840 15 49
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="btn btn-whatsapp btn-lg px-4">
+              <i class="fab fa-whatsapp me-2"></i>Contact WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white pt-5 pb-4" id="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Logo et description -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand mb-3">
+            <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
+          </div>
+          <p class="text-light mb-4">
+            Votre partenaire pour une maintenance fiable et durable. 
+            Nous offrons des solutions techniques complètes pour tous vos équipements.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/Bme.sn" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/polymaint_suarl/" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/polymaint/posts/?feedView=all" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/221778401549" target="_blank" class="text-white fs-5">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Liens rapides -->
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="apropos.html" class="text-light text-decoration-none">À propos</a></li>
+            <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Services -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="maintenance.html" class="text-light text-decoration-none">Maintenance</a></li>
+            <li class="mb-2"><a href="conseil.html" class="text-light text-decoration-none">Conseil</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-phone me-2 text-accent"></i>
+              <a href="tel:+221778401549" class="text-light text-decoration-none">+221 77 840 15 49</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:contact@polymaint.sn" class="text-light text-decoration-none">contact@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-globe me-2 text-accent"></i>
+              <a href="http://www.polymaint.sn" class="text-light text-decoration-none">www.polymaint.sn</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt me-2 text-accent"></i>
+              <span class="text-light">Sénégal</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="bg-secondary my-4">
+      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2026 PolyMaint – Pôle Froid & Climatisation. Tous droits réservés.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script pour animations -->
+  <script src="js/script.js"></script>
+</body>
+</html>
