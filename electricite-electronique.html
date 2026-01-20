@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Froid & Climatisation - PolyMaint</title>
+  <title>Électronique & Électricité - PolyMaint</title>
 
   <!-- Favicon -->
   <link rel="icon" href="img/logo1.png" type="image/png">
@@ -55,7 +55,7 @@ body {
     transition: opacity 1.5s ease-in-out;
 }
 
-/* Overlay léger pour améliorer la lisibilité */
+/* Overlay léger qui disparaît après quelques secondes */
 .hero-carousel::after {
     content: '';
     position: absolute;
@@ -63,24 +63,35 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 1;
+    animation: reduceOpacity 3s ease-out 1s forwards;
 }
 
-/* Images locales pour Froid & Climatisation */
+@keyframes reduceOpacity {
+    0% {
+        background: rgba(0, 0, 0, 0.7);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Images locales pour Électronique & Électricité */
 .hero-carousel .carousel-item:nth-child(1) {
-    background-image: url('img/froid.jpg');
+    background-image: url('img/electrique.jpeg');
     background-position: center center;
 }
 
 .hero-carousel .carousel-item:nth-child(2) {
-    background-image: url('img/froid2.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                      url('img/electrique2.jpeg');
     background-position: center center;
 }
 
 .hero-carousel .carousel-item:nth-child(3) {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                      url('img/froid.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                      url('img/electrique.jpeg');
     background-position: center center;
 }
 
@@ -98,27 +109,27 @@ body {
 .hero-text-left {
     max-width: 700px;
     text-align: left;
-    padding-right: 10px; /* Espace pour l'icône sur desktop */
+    padding-right: 10px;
 }
 
 /* Titre en blanc */
 .hero-main-title-direct {
-    font-size: 3rem;          /* un peu plus petit qu'avant */
+    font-size: 3rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
     line-height: 1.1;
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-    white-space: nowrap;     /* reste sur une ligne */
-    overflow: visible;      /* plus de coupe */
+    white-space: nowrap;
+    overflow: visible;
 }
 
-/* Sous-titre en orange (#FF9800) */
+/* Sous-titre en cyan (#00ACC1) */
 .hero-subtitle-direct {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: #FF9800 !important;
+    color: #00ACC1 !important;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     white-space: nowrap;
 }
@@ -131,7 +142,7 @@ body {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: white;
-    max-width: 600px; /* Limiter la largeur */
+    max-width: 600px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     font-weight: 400;
 }
@@ -146,11 +157,11 @@ body {
 }
 
 .hero-icon-direct {
-    color: #FF9800;
+    color: #00ACC1;
     font-size: 8rem;
     opacity: 0.7;
     animation: pulse 3s infinite ease-in-out;
-    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.4));
+    filter: drop-shadow(0 0 10px rgba(0, 172, 193, 0.4));
 }
 
 @keyframes pulse {
@@ -166,7 +177,7 @@ body {
 
 /* Bouton */
 .hero-btn-direct {
-    background-color: #FF9800 !important;
+    background-color: #00ACC1 !important;
     border: none !important;
     padding: 0.8rem 2rem;
     font-weight: 600;
@@ -177,7 +188,7 @@ body {
 }
 
 .hero-btn-direct:hover {
-    background-color: #00ACC1 !important;
+    background-color: #FF9800 !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
@@ -224,7 +235,6 @@ body {
         max-width: 100%;
     }
     
-    /* SUR TABLETTE - L'icône passe en dessous du texte */
     .hero-icon-direct {
         font-size: 6rem;
         position: relative;
@@ -233,7 +243,7 @@ body {
         transform: none;
         margin-top: 2rem;
         text-align: center;
-        order: 3; /* Met l'icône en dernier */
+        order: 3;
     }
     
     .hero-icon-right {
@@ -243,16 +253,16 @@ body {
         transform: none;
         text-align: center;
         margin-top: 2rem;
-        order: 3; /* Met l'icône en dernier */
+        order: 3;
     }
     
     .hero-text-left {
-        padding-right: 0; /* Supprime l'espace pour l'icône */
-        order: 1; /* Met le texte en premier */
+        padding-right: 0;
+        order: 1;
     }
     
     .hero-content-direct {
-        flex-direction: column; /* Passe en colonne */
+        flex-direction: column;
         justify-content: center;
         padding-top: 80px;
     }
@@ -260,7 +270,7 @@ body {
 
 @media (max-width: 768px) {
     .hero-section-direct {
-        height: auto; /* Hauteur auto pour s'adapter */
+        height: auto;
         min-height: 400px;
         padding: 80px 0 40px 0;
     }
@@ -272,20 +282,20 @@ body {
     
     .hero-main-title-direct {
         font-size: 2rem;
-        text-align: center; /* Centre le titre sur mobile */
+        text-align: center;
     }
     
     .hero-subtitle-direct {
         font-size: 1.1rem;
-        text-align: center; /* Centre le sous-titre sur mobile */
+        text-align: center;
     }
     
     .hero-text-justified {
         font-size: 0.95rem;
         line-height: 1.6;
-        text-align: center; /* Centre le texte sur mobile */
+        text-align: center;
         max-width: 100%;
-        padding: 0 15px; /* Ajoute du padding sur les côtés */
+        padding: 0 15px;
     }
     
     .hero-icon-direct {
@@ -300,7 +310,7 @@ body {
     
     .hero-btn-direct {
         display: block;
-        margin: 0 auto; /* Centre le bouton */
+        margin: 0 auto;
     }
 }
 
@@ -324,10 +334,10 @@ body {
     }
 }
 
-/* ===== STYLES SPÉCIFIQUES FROID & CLIMATISATION ===== */
+/* ===== STYLES SPÉCIFIQUES ÉLECTRONIQUE & ÉLECTRICITÉ ===== */
 
-/* Cartes d'expertise */
-.expertise-card {
+/* Cartes de compétences */
+.skill-card {
     background: white;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -336,17 +346,17 @@ body {
     height: 100%;
 }
 
-.expertise-card:hover {
+.skill-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-left: 4px solid #FF9800;
+    border-left: 4px solid #00ACC1;
 }
 
-.expertise-icon {
+.skill-icon {
     width: 70px;
     height: 70px;
     margin-bottom: 1.5rem;
-    background: rgba(255, 152, 0, 0.1);
+    background: rgba(0, 172, 193, 0.1);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -358,49 +368,168 @@ body {
     background: white;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border-left: 5px solid #FF9800;
+    border-left: 5px solid #00ACC1;
 }
 
-/* Galerie */
-.gallery-item {
-    transition: all 0.3s ease;
+/* Section détails */
+#details {
+    position: relative;
+}
+
+#details .content-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+#details .col-lg-6.d-flex {
+    min-height: auto;
+}
+
+.installation-image-container {
+    height: auto;
+    max-height: 380px;
+    min-height: 280px;
     overflow: hidden;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.gallery-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+.installation-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transition: transform 0.3s ease;
 }
 
-.placeholder-image {
-    background: linear-gradient(135deg, #00ACC1, #00838F);
-    height: 200px;
+.installation-image-container:hover img {
+    transform: scale(1.05);
+}
+
+.installation-text {
+    padding-top: 20px;
+}
+
+/* Styles pour les features */
+.feature-item {
+    position: relative;
+    padding-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateX(5px);
+}
+
+.feature-icon-box {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #00ACC1, #0097A7);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0, 172, 193, 0.2);
+    transition: all 0.3s ease;
 }
 
-/* Badge pour les nouvelles technologies */
-.tech-badge {
-    background: linear-gradient(135deg, #FF9800, #FF5722);
+.feature-icon-box i {
     color: white;
-    padding: 0.2rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    font-size: 1.5rem;
 }
 
-/* Responsive pour les sections */
+.feature-item:hover .feature-icon-box {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 172, 193, 0.3);
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content h5 {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.feature-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Badge sur l'image */
+.image-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    animation: badgePulse 2s infinite;
+    z-index: 10;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Box en surbrillance sous l'image */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(0, 172, 193, 0.05), rgba(255, 152, 0, 0.05));
+    border-left: 4px solid #00ACC1;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.highlight-box:hover {
+    background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 152, 0, 0.1));
+    box-shadow: 0 5px 15px rgba(0, 172, 193, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive pour tablettes et mobiles */
+@media (max-width: 991px) {
+    .installation-image-container {
+        max-height: 400px;
+        min-height: 300px;
+    }
+}
+
 @media (max-width: 768px) {
-    .expertise-card {
+    .skill-card {
         margin-bottom: 20px;
     }
     
     .content-card {
         padding: 1.5rem !important;
+    }
+    
+    .installation-image-container {
+        max-height: 350px;
+        min-height: 250px;
+    }
+    
+    .feature-icon-box {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    
+    .feature-icon-box i {
+        font-size: 1.2rem;
     }
 }
 
@@ -412,7 +541,6 @@ body {
   <header>
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
       <div class="container">
-        <!-- Logo dans la navbar avec texte -->
         <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
           <div class="d-flex flex-column">
@@ -421,22 +549,18 @@ body {
           </div>
         </a>
 
-        <!-- Bouton mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu -->
         <div class="collapse navbar-collapse" id="mainNavbar">
           <ul class="navbar-nav ms-auto align-items-center">
-            <!-- Accueil -->
             <li class="nav-item mx-1">
               <a class="nav-link" href="index.html">
                 <i class="fas fa-home me-1"></i>Accueil
               </a>
             </li>
 
-            <!-- Nos Domaines -->
             <li class="nav-item dropdown mx-1">
               <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">
                 <i class="fas fa-layer-group me-1"></i>Nos Domaines
@@ -444,14 +568,13 @@ body {
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
                 <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
-                <li><a class="dropdown-item active" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
                 <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
                 <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
-                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electromécanique et Electricité</a></li>
+                <li><a class="dropdown-item active" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electromécanique et Electricité</a></li>
               </ul>
             </li>
 
-            <!-- Nos Services -->
             <li class="nav-item dropdown mx-1">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                 <i class="fas fa-cogs me-1"></i>Nos Services
@@ -462,21 +585,18 @@ body {
               </ul>
             </li>
 
-            <!-- À Propos -->
             <li class="nav-item mx-1">
               <a class="nav-link" href="apropos.html">
                 <i class="fas fa-info-circle me-1"></i>À Propos
               </a>
             </li>
 
-            <!-- Contact -->
             <li class="nav-item mx-1">
               <a class="nav-link" href="contact.html">
                 <i class="fas fa-envelope me-1"></i>Contact
               </a>
             </li>
 
-            <!-- WhatsApp CTA -->
             <li class="nav-item ms-lg-2">
               <a class="btn btn-whatsapp px-4" href="https://wa.me/221778401549" target="_blank">
                 <i class="fab fa-whatsapp me-2"></i>WhatsApp
@@ -490,7 +610,6 @@ body {
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero-section-direct" id="hero">
-    <!-- Carrousel d'arrière-plan -->
     <div class="hero-carousel">
       <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
@@ -501,19 +620,18 @@ body {
       </div>
     </div>
     
-    <!-- Icône à droite (position absolue) -->
     <div class="hero-icon-right">
-      <i class="fas fa-snowflake hero-icon-direct"></i>
+      <i class="fas fa-bolt hero-icon-direct"></i>
     </div>
     
     <div class="container">
       <div class="hero-content-direct">
         <div class="hero-text-left">
-          <h1 class="hero-main-title-direct">Pôle Froid & Climatisation</h1>
-          <p class="hero-subtitle-direct">Confort thermique et performance énergétique sur mesure</p>
+          <h1 class="hero-main-title-direct">Pôle Électronique & Électricité</h1>
+          <p class="hero-subtitle-direct">Solutions d'énergie et de contrôle pour tous vos systèmes électriques</p>
           
           <div class="hero-text-justified">
-            <p>Chez PolyMaint, notre pôle Froid & Climatisation intervient dans l'étude, l'installation, la maintenance et le dépannage de systèmes thermiques pour garantir la qualité de l'air, le confort et l'efficacité énergétique. Nous accompagnons entreprises, établissements publics, laboratoires et hôpitaux dans des solutions sur mesure.</p>
+            <p>Le pôle Électronique & Électricité de PolyMaint assure la conception, l'installation et la maintenance de vos systèmes électriques, de la distribution basse tension aux systèmes de contrôle industriels. Nos équipes qualifiées garantissent des installations conformes aux normes, sécurisées et optimisées pour vos besoins résidentiels, tertiaires et industriels.</p>
           </div>
           
           <a href="contact.html" class="btn hero-btn-direct">
@@ -524,80 +642,80 @@ body {
     </div>
   </section>
 
-  <!-- ===== EXPERTISES ===== -->
-  <section class="py-5 bg-light" id="expertises">
+  <!-- ===== COMPÉTENCES CLÉS ===== -->
+  <section class="py-5 bg-light" id="competences">
     <div class="container">
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-title mb-3">Nos expertises</h2>
-          <p class="lead text-muted">Des solutions thermiques sur mesure pour tous vos besoins</p>
+          <h2 class="section-title mb-3">Nos domaines d'expertise</h2>
+          <p class="lead text-muted">Des solutions complètes pour tous vos besoins en électricité et électronique</p>
         </div>
       </div>
 
       <div class="row g-4">
-        <!-- Froid Commercial & Industriel -->
+        <!-- Électricité bâtiment -->
         <div class="col-md-4">
-          <div class="expertise-card p-4">
-            <div class="expertise-icon">
-              <i class="fas fa-temperature-low fa-2x" style="color: #FF9800;"></i>
+          <div class="skill-card p-4">
+            <div class="skill-icon">
+              <i class="fas fa-home fa-2x" style="color: #00ACC1;"></i>
             </div>
-            <h3 class="h5 fw-bold mb-3">Froid Commercial & Industriel</h3>
-            <p class="text-muted">Conception, installation et maintenance de chambres froides, vitrines réfrigérées, entrepôts frigorifiques pour divers secteurs.</p>
+            <h3 class="h5 fw-bold mb-3">Électricité bâtiment</h3>
+            <p class="text-muted">Installations électriques résidentielles et tertiaires, tableaux électriques, éclairage, prises, protection différentielle.</p>
           </div>
         </div>
 
-        <!-- Climatisation Multisplit & VRV -->
+        <!-- Contrôle industriel -->
         <div class="col-md-4">
-          <div class="expertise-card p-4">
-            <div class="expertise-icon">
-             <i class="fas fa-snowflake fa-2x" style="color: #00ACC1;"></i>
+          <div class="skill-card p-4">
+            <div class="skill-icon">
+              <i class="fas fa-industry fa-2x" style="color: #FF9800;"></i>
             </div>
-            <h3 class="h5 fw-bold mb-3">Climatisation Multisplit & VRV</h3>
-            <p class="text-muted">Systèmes réversibles pour bureaux, hôtels et hôpitaux, incluant split, multisplit et VRV pour un confort sur mesure.</p>
+            <h3 class="h5 fw-bold mb-3">Contrôle industriel</h3>
+            <p class="text-muted">Automates programmables (PLC), variateurs de vitesse, systèmes de supervision, armoires électriques industrielles.</p>
           </div>
         </div>
 
-        <!-- Ventilation et Qualité de l'air -->
+        <!-- Énergie renouvelable -->
         <div class="col-md-4">
-          <div class="expertise-card p-4">
-            <div class="expertise-icon">
-             <i class="fas fa-fan fa-2x" style="color: #FF9800;"></i>
+          <div class="skill-card p-4">
+            <div class="skill-icon">
+              <i class="fas fa-solar-panel fa-2x" style="color: #00ACC1;"></i>
             </div>
-            <h3 class="h5 fw-bold mb-3">Ventilation et Qualité de l'air</h3>
-            <p class="text-muted">Solutions de VMC, purification et contrôle d'hygrométrie pour garantir un air intérieur sain.</p>
+            <h3 class="h5 fw-bold mb-3">Énergie renouvelable</h3>
+            <p class="text-muted">Installations photovoltaïques, systèmes solaires, onduleurs, régulateurs de charge, solutions d'autonomie énergétique.</p>
           </div>
         </div>
 
-        <!-- Maintenance Thermique -->
+        <!-- Sécurité électrique -->
         <div class="col-md-4">
-          <div class="expertise-card p-4">
-            <div class="expertise-icon">
-              <i class="fas fa-tools fa-2x" style="color: #00ACC1;"></i>
+          <div class="skill-card p-4">
+            <div class="skill-icon">
+              <i class="fas fa-shield-alt fa-2x" style="color: #FF9800;"></i>
             </div>
-            <h3 class="h5 fw-bold mb-3">Maintenance Thermique</h3>
-            <p class="text-muted">Suivi régulier, maintenance préventive et curative, et reporting technique pour optimiser la performance de vos installations.</p>
+            <h3 class="h5 fw-bold mb-3">Sécurité électrique</h3>
+            <p class="text-muted">Mise à la terre, parafoudres, dispositifs de protection, diagnostics électriques, conformité aux normes NFC 15-100.</p>
           </div>
         </div>
 
-        <!-- Études et Audits -->
+        <!-- Électronique de puissance -->
         <div class="col-md-4">
-          <div class="expertise-card p-4">
-            <div class="expertise-icon">
+          <div class="skill-card p-4">
+            <div class="skill-icon">
+              <i class="fas fa-microchip fa-2x" style="color: #00ACC1;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-3">Électronique de puissance</h3>
+            <p class="text-muted">Alimentations, convertisseurs, hacheurs, onduleurs, maintenance de cartes électroniques industrielles.</p>
+          </div>
+        </div>
+
+        <!-- Maintenance préventive -->
+        <div class="col-md-4">
+          <div class="skill-card p-4">
+            <div class="skill-icon">
               <i class="fas fa-clipboard-check fa-2x" style="color: #FF9800;"></i>
             </div>
-            <h3 class="h5 fw-bold mb-3">Études et Audits</h3>
-            <p class="text-muted">Audits énergétiques, dimensionnement, calcul des charges et recommandations pour améliorer l'efficacité énergétique.</p>
-          </div>
-        </div>
-
-        <!-- Pompes à chaleur -->
-        <div class="col-md-4">
-          <div class="expertise-card p-4">
-            <div class="expertise-icon">
-              <i class="fas fa-water fa-2x" style="color: #00ACC1;"></i>
-            </div>
-            <h3 class="h5 fw-bold mb-3">Pompes à chaleur</h3>
-            <p class="text-muted">Solutions durables : PAC air/air, air/eau, géothermie et autres systèmes d'énergie renouvelable.</p>
+            <h3 class="h5 fw-bold mb-3">Maintenance préventive</h3>
+            <p class="text-muted">Contrats d'entretien, thermographie infrarouge, mesures électriques, reporting technique, gestion de la durée de vie.</p>
           </div>
         </div>
       </div>
@@ -605,81 +723,103 @@ body {
   </section>
 
   <!-- ===== CONTENU DÉTAILLÉ ===== -->
-  <section class="py-5" id="details">
+  <section id="details" class="py-5 bg-white">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <div class="content-card p-5">
-            <h2 class="mb-4">Pourquoi choisir PolyMaint pour votre système thermique ?</h2>
-            <ul class="list-unstyled">
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Expertise certifiée</strong> : Techniciens qualifiés pour toutes marques</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Solution sur mesure</strong> : Étude personnalisée selon vos besoins</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Économies d'énergie</strong> : Optimisation des consommations</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Intervention rapide</strong> : Dépannage d'urgence 24h/24</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Conformité normative</strong> : Respect des normes en vigueur</li>
-              <li><i class="fas fa-check-circle me-2" style="color: #FF9800;"></i> <strong>Maintenance préventive</strong> : Suivi régulier pour éviter les pannes</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="text-center">
-            <div class="placeholder-image rounded-3 mb-4" style="height: 300px;">
-              <i class="fas fa-snowflake fa-5x text-white opacity-75"></i>
-            </div>
-            <h3 class="h4 mb-3">Illustration Froid & Climatisation</h3>
-            <p class="text-muted">Des solutions thermiques adaptées à vos besoins spécifiques, du petit système résidentiel aux grandes installations industrielles.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="row align-items-stretch">
 
-  <!-- ===== GALERIE ===== -->
-  <section class="py-5 bg-light" id="galerie">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-title mb-3">Nos réalisations</h2>
-          <p class="lead text-muted">Découvrez nos installations dans le domaine du froid et climatisation</p>
-        </div>
-      </div>
+        <!-- COLONNE GAUCHE -->
+        <div class="col-lg-6 d-flex">
+          <div class="content-card p-5 w-100 d-flex flex-column">
+            <h2 class="fw-bold mb-4" style="color: #00ACC1;">
+              <i class="fas fa-bolt me-2"></i>Pourquoi faire confiance à PolyMaint ?
+            </h2>
 
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="gallery-item rounded-3 overflow-hidden shadow-sm position-relative">
-            <span class="tech-badge">Chantier</span>
-            <div class="placeholder-image d-flex align-items-center justify-content-center">
-              <i class="fas fa-hard-hat fa-4x text-white opacity-75"></i>
+            <div class="feature-item mb-4">
+              <div class="d-flex align-items-start">
+                <div class="feature-icon-box">
+                  <i class="fas fa-user-check"></i>
+                </div>
+                <div class="feature-content">
+                  <h5 class="fw-bold mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: #4CAF50; font-size: 0.9rem;"></i>
+                    Techniciens qualifiés
+                  </h5>
+                  <p class="mb-0">Nos électriciens et électroniciens sont certifiés et formés aux dernières normes de sécurité.</p>
+                </div>
+              </div>
             </div>
-            <div class="p-3 bg-white">
-              <p class="mb-0 fw-semibold">Photo chantier installation froid clim</p>
-              <small class="text-muted">Installation complète de système de climatisation</small>
+
+            <div class="feature-item mb-4">
+              <div class="d-flex align-items-start">
+                <div class="feature-icon-box">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <div class="feature-content">
+                  <h5 class="fw-bold mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: #4CAF50; font-size: 0.9rem;"></i>
+                    Conformité garantie
+                  </h5>
+                  <p class="mb-0">Toutes nos installations respectent strictement les normes en vigueur (NFC 15-100, ISO, CEI).</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="d-flex align-items-start">
+                <div class="feature-icon-box">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="feature-content">
+                  <h5 class="fw-bold mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: #4CAF50; font-size: 0.9rem;"></i>
+                    Réactivité et suivi
+                  </h5>
+                  <p class="mb-0">Interventions rapides 24h/24 pour les urgences et suivi personnalisé de vos installations.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="col-lg-6 d-flex flex-column">
+          <div class="d-flex flex-column flex-grow-1">
+            <!-- IMAGE -->
+            <div class="installation-image-container flex-grow-1">
+              <img src="img/electrique3.jpeg" alt="Installation électrique industrielle" class="img-fluid w-100 h-100 object-fit-cover">
+              <div class="image-badge">
+                <i class="fas fa-certificate me-2"></i>Normes NFC 15-100
+              </div>
+            </div>
+
+            <!-- TEXTE SOUS IMAGE -->
+            <div class="installation-text mt-4">
+              <div class="highlight-box p-4">
+                <h5 class="fw-bold mb-3" style="color: #00ACC1;">
+                  <i class="fas fa-star me-2"></i>Une expertise technique reconnue
+                </h5>
+                <p class="mb-0" style="line-height: 1.8;">
+                  <i class="fas fa-arrow-right me-2" style="color: #FF9800; font-size: 0.85rem;"></i>
+                  Nous intervenons sur tous types d'installations : du domicile aux sites industriels, 
+                  en passant par les bâtiments tertiaires et les infrastructures publiques.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="gallery-item rounded-3 overflow-hidden shadow-sm position-relative">
-            <span class="tech-badge">Moderne</span>
-            <div class="placeholder-image d-flex align-items-center justify-content-center">
-              <i class="fas fa-snowflake fa-4x text-white opacity-75"></i>
-            </div>
-            <div class="p-3 bg-white">
-              <p class="mb-0 fw-semibold">Photo système de climatisation moderne</p>
-              <small class="text-muted">Système dernier cri à haute efficacité énergétique</small>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ===== CTA SECTION ===== -->
-  <section class="py-5" style="background: linear-gradient(135deg, #FF9800, #00ACC1);">
+  <section class="py-5" style="background: linear-gradient(135deg, #00ACC1, #FF9800);">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center text-white">
-          <h2 class="mb-3">Besoin d'une solution thermique adaptée ?</h2>
-          <p class="lead mb-4">Contactez-nous pour une étude gratuite de vos besoins en froid et climatisation.</p>
+          <h2 class="mb-3">Un projet électrique ou électronique ?</h2>
+          <p class="lead mb-4">Notre équipe d'experts est à votre disposition pour étudier vos besoins et vous proposer des solutions adaptées.</p>
           <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
             <a href="tel:+221778401549" class="btn btn-light btn-lg px-4">
               <i class="fas fa-phone me-2"></i>+221 77 840 15 49
@@ -697,7 +837,6 @@ body {
   <footer class="bg-dark text-white pt-5 pb-4" id="footer">
     <div class="container">
       <div class="row">
-        <!-- Logo et description -->
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="footer-brand mb-3">
             <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
@@ -722,7 +861,6 @@ body {
           </div>
         </div>
         
-        <!-- Liens rapides -->
         <div class="col-lg-2 col-md-6 mb-4">
           <h5 class="text-accent fw-bold mb-4">Navigation</h5>
           <ul class="list-unstyled">
@@ -732,7 +870,6 @@ body {
           </ul>
         </div>
         
-        <!-- Services -->
         <div class="col-lg-3 col-md-6 mb-4">
           <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
           <ul class="list-unstyled">
@@ -741,7 +878,6 @@ body {
           </ul>
         </div>
         
-        <!-- Contact -->
         <div class="col-lg-3 col-md-6 mb-4">
           <h5 class="text-accent fw-bold mb-4">Contact</h5>
           <ul class="list-unstyled">
@@ -769,7 +905,7 @@ body {
       
       <div class="row">
         <div class="col-md-12 text-center">
-          <p class="mb-0">© 2026 PolyMaint – Pôle Froid & Climatisation. Tous droits réservés.</p>
+          <p class="mb-0">© 2026 PolyMaint – Pôle Électronique & Électricité. Tous droits réservés.</p>
         </div>
       </div>
     </div>
