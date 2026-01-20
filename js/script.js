@@ -233,11 +233,11 @@ window.addEventListener('scroll', () => {
         updateActiveNav();
     }
 });
-
 // ===== CLIC NAVBAR =====
 document.querySelectorAll('.navbar-nav a').forEach(link => {
     link.addEventListener('click', () => {
-        activateLink(link); // Ne plus clearActiveNav pour que ça reste actif
+        clearActiveNav(); // Retirer tous les états actifs d'abord
+        activateLink(link); // Puis activer seulement le lien cliqué
     });
 });
 
