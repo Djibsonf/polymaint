@@ -275,7 +275,9 @@
 .btn-whatsapp {
     background-color: #25D366 !important;
     border: none !important;
-    font-weight: 600;
+    font-weight: 800;
+    font-size: 0.7rem;
+    margin-left: -20%;
     padding: 0.6rem 1.5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -292,7 +294,7 @@
 }
 
 .btn-whatsapp i {
-    font-size: 1.1em;
+    font-size: 1.5em;
     margin-right: 0.5rem;
 }
 
@@ -400,6 +402,9 @@ body {
         scrollbar-width: thin;
     }
 }
+
+
+
 
 
 /* ===== CORRECTION CAROUSEL ===== */
