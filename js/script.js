@@ -173,76 +173,90 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== GESTION DE L'ÉTAT ACTIF DE LA NAVBAR =====
 
-function clearActiveNav() {
-    document.querySelectorAll('.navbar-nav a').forEach(link => {
-        link.classList.remove('active');
-        link.removeAttribute('aria-current');
-    });
-}
+    function clearActiveNav() {
+        document.querySelectorAll('.navbar-nav a').forEach(link => {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+        });
+    }
 
-function activateLink(link) {
-    if (!link) return;
+    function activateLink(link) {
+        if (!link) return;
 
-    link.classList.add('active');
-    link.setAttribute('aria-current', 'page');
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
 
-    // Activer le parent dropdown si nécessaire
-    const dropdownMenu = link.closest('.dropdown-menu');
-    if (dropdownMenu) {
-        const toggle = dropdownMenu.parentElement.querySelector('.dropdown-toggle');
-        if (toggle) {
-            toggle.classList.add('active');
-            toggle.setAttribute('aria-current', 'page');
+        // Activer le parent dropdown si nécessaire
+        const dropdownMenu = link.closest('.dropdown-menu');
+        if (dropdownMenu) {
+            const toggle = dropdownMenu.parentElement.querySelector('.dropdown-toggle');
+            if (toggle) {
+                toggle.classList.add('active');
+                toggle.setAttribute('aria-current', 'page');
+            }
         }
     }
-}
 
-function updateActiveNav() {
-    // Ne pas clearActiveNav ici, pour que le carré bleu reste actif
-    const page = window.location.pathname.split('/').pop() || 'index.html';
+    function updateActiveNav() {
+        clearActiveNav(); // Toujours nettoyer d'abord
+        
+        const page = window.location.pathname.split('/').pop() || 'index.html';
 
-    if (page === 'index.html') {
-        // On scroll dans index.html, activer la section
-        const scrollPos = window.scrollY + 120;
-        const sections = document.querySelectorAll('section[id]');
-        let currentSection = null;
+        if (page === 'index.html' || page === '') {
+            // On est sur index.html, gérer le scroll par sections
+            const scrollPos = window.scrollY + 120;
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = null;
 
-        sections.forEach(section => {
-            const top = section.offsetTop;
-            const bottom = top + section.offsetHeight;
-            if (scrollPos >= top && scrollPos < bottom) {
-                currentSection = section.id;
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const bottom = top + section.offsetHeight;
+                if (scrollPos >= top && scrollPos < bottom) {
+                    currentSection = section.id;
+                }
+            });
+
+            // Si on a trouvé une section avec un lien dans la navbar
+            if (currentSection) {
+                const sectionLink = document.querySelector(`.navbar-nav a[href="#${currentSection}"]`);
+                if (sectionLink) {
+                    activateLink(sectionLink);
+                    return; // IMPORTANT : sortir ici pour ne pas activer "Accueil"
+                }
+            }
+            
+            // Sinon (en haut de la page ou pas de section trouvée), activer "Accueil"
+            activateLink(document.querySelector('.navbar-nav a[href="index.html"]'));
+            
+        } else {
+            // Autres pages
+            const link = document.querySelector(`.navbar-nav a[href="${page}"]`);
+            activateLink(link);
+        }
+    }
+
+    // ===== SCROLL (uniquement pour index.html) =====
+    window.addEventListener('scroll', () => {
+        const page = window.location.pathname.split('/').pop() || 'index.html';
+        if (page === 'index.html' || page === '') {
+            updateActiveNav();
+        }
+    });
+
+    // ===== CLIC NAVBAR =====
+    document.querySelectorAll('.navbar-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            // Pour les liens internes (#), laisser updateActiveNav gérer
+            const href = link.getAttribute('href');
+            if (!href.startsWith('#')) {
+                clearActiveNav();
+                activateLink(link);
             }
         });
-
-        if (currentSection) {
-            activateLink(document.querySelector(`.navbar-nav a[href="#${currentSection}"]`));
-        } else {
-            activateLink(document.querySelector('.navbar-nav a[href="index.html"]'));
-        }
-    } else {
-        // Autres pages
-        const link = document.querySelector(`.navbar-nav a[href="${page}"]`);
-        activateLink(link);
-    }
-}
-
-// ===== SCROLL (uniquement pour index.html) =====
-window.addEventListener('scroll', () => {
-    if (window.location.pathname.split('/').pop() === 'index.html') {
-        updateActiveNav();
-    }
-});
-// ===== CLIC NAVBAR =====
-document.querySelectorAll('.navbar-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        clearActiveNav(); // Retirer tous les états actifs d'abord
-        activateLink(link); // Puis activer seulement le lien cliqué
     });
-});
 
-// ===== INIT =====
-window.addEventListener('load', updateActiveNav);
-window.addEventListener('popstate', updateActiveNav);
+    // ===== INIT =====
+    window.addEventListener('load', updateActiveNav);
+    window.addEventListener('popstate', updateActiveNav);
 
 });
