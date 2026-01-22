@@ -26,14 +26,17 @@ body {
     z-index: 1030;
 }
 
+/* ===== HERO SECTION ===== */
 .hero-section-direct {
     position: relative;
-    margin-top: 0;
     height: 70vh;
     min-height: 500px;
     overflow: hidden;
     color: white;
+    width: 100%;
 }
+
+/* Conteneur du carousel */
 .hero-carousel {
     position: absolute;
     top: 0;
@@ -43,59 +46,33 @@ body {
     z-index: 0;
 }
 
+/* Carousel Bootstrap */
+.hero-carousel .carousel,
 .hero-carousel .carousel-inner,
 .hero-carousel .carousel-item {
+    width: 100%;
     height: 100%;
 }
 
+/* Slides en background */
 .hero-carousel .carousel-item {
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
-    transition: opacity 1.5s ease-in-out;
 }
 
-/* Overlay léger qui disparaît après quelques secondes */
-.hero-carousel::after {
-    content: '';
+/* Overlay sombre */
+.carousel-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
-    animation: reduceOpacity 3s ease-out 1s forwards;
 }
 
-@keyframes reduceOpacity {
-    0% {
-        background: rgba(0, 0, 0, 0.7);
-    }
-    100% {
-        background: rgba(0, 0, 0, 0.4);
-    }
-}
-
-/* Images locales pour Électronique & Électricité */
-.hero-carousel .carousel-item:nth-child(1) {
-    background-image: url('img/electrique.jpeg');
-    background-position: center center;
-}
-
-.hero-carousel .carousel-item:nth-child(2) {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                      url('img/electrique2.jpeg');
-    background-position: center center;
-}
-
-.hero-carousel .carousel-item:nth-child(3) {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                      url('img/electrique.jpeg');
-    background-position: center center;
-}
-
-/* Contenu - aligné à gauche */
+/* Contenu texte au-dessus */
 .hero-content-direct {
     position: relative;
     z-index: 2;
@@ -105,49 +82,13 @@ body {
     padding-top: 100px;
 }
 
-/* Texte à gauche */
+/* Texte */
 .hero-text-left {
     max-width: 700px;
     text-align: left;
-    padding-right: 10px;
 }
 
-/* Titre en blanc */
-.hero-main-title-direct {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-    white-space: nowrap;
-    overflow: visible;
-}
-
-/* Sous-titre en cyan (#00ACC1) */
-.hero-subtitle-direct {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: #00ACC1 !important;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    white-space: nowrap;
-}
-
-/* Texte justifié en blanc avec bonne lisibilité */
-.hero-text-justified {
-    text-align: justify;
-    text-justify: inter-word;
-    line-height: 1.7;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: white;
-    max-width: 600px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-    font-weight: 400;
-}
-
-/* Icône à droite - position plus basse */
+/* Icône à droite */
 .hero-icon-right {
     position: absolute;
     right: 5%;
@@ -155,14 +96,41 @@ body {
     transform: translateY(-50%);
     z-index: 2;
 }
+/* === FIX CRITIQUE POUR BACKGROUND SLIDES === */
+
+/* Le conteneur doit être relatif */
+.hero-carousel .carousel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Tous les slides sont superposés */
+.hero-carousel .carousel-item {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Seul le slide actif est visible */
+.hero-carousel .carousel-item {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-carousel .carousel-item.active {
+    opacity: 1;
+    z-index: 2;
+}
 
 .hero-icon-direct {
     color: #00ACC1;
     font-size: 8rem;
     opacity: 0.7;
-    animation: pulse 3s infinite ease-in-out;
-    filter: drop-shadow(0 0 10px rgba(0, 172, 193, 0.4));
 }
+
 
 @keyframes pulse {
     0%, 100% { 
@@ -639,38 +607,46 @@ body {
   </header>
 
   <!-- ===== HERO SECTION ===== -->
-  <section class="hero-section-direct" id="hero">
-    <div class="hero-carousel">
-      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-inner">
-          <div class="carousel-item active"></div>
-          <div class="carousel-item"></div>
-          <div class="carousel-item"></div>
-        </div>
+ <section class="hero-section-direct" id="hero">
+  <!-- Carrousel d'arrière-plan -->
+  <div class="hero-carousel">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active" style="background-image: url('img/g1.jpeg');"></div>
+        <div class="carousel-item" style="background-image: url('img/g2.jpeg');"></div>
+        <div class="carousel-item" style="background-image: url('img/g3.jpeg');"></div>
+
       </div>
     </div>
-    
-    <div class="hero-icon-right">
-      <i class="fas fa-bolt hero-icon-direct"></i>
-    </div>
-    
-    <div class="container">
-      <div class="hero-content-direct">
-        <div class="hero-text-left">
-          <h1 class="hero-main-title-direct">Pôle électromécanique & Électricité</h1>
-          <p class="hero-subtitle-direct">Solutions d'énergie et de contrôle pour tous vos systèmes électriques</p>
-          
-          <div class="hero-text-justified">
-            <p>Le pôle Électronique & Électricité de PolyMaint assure la conception, l'installation et la maintenance de vos systèmes électriques, de la distribution basse tension aux systèmes de contrôle industriels. Nos équipes qualifiées garantissent des installations conformes aux normes, sécurisées et optimisées pour vos besoins résidentiels, tertiaires et industriels.</p>
-          </div>
-          
-          <a href="contact.html" class="btn hero-btn-direct">
-            <i class="fas fa-phone-alt me-2"></i>Demander un devis
-          </a>
+
+    <!-- Overlay sombre -->
+    <div class="carousel-overlay"></div>
+  </div>
+
+  <!-- Icône à droite -->
+  <div class="hero-icon-right">
+    <i class="fas fa-images hero-icon-direct"></i>
+  </div>
+
+  <div class="container">
+    <div class="hero-content-direct">
+      <div class="hero-text-left">
+        <h1 class="hero-main-title-direct">Galerie Visuelle</h1>
+        <p class="hero-subtitle-direct">Découvrez notre univers en images et vidéos</p>
+
+        <div class="hero-text-justified">
+          <p>Explorez notre collection d'images et vidéos qui illustrent notre expertise technique et nos interventions dans différents domaines.</p>
         </div>
+
+        <a href="#diaporama" class="btn hero-btn-direct">
+          <i class="fas fa-play-circle me-2"></i>Voir le diaporama
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ===== COMPÉTENCES CLÉS ===== -->
   <section class="py-5 bg-light" id="competences">
@@ -897,6 +873,7 @@ body {
             <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
             <li class="mb-2"><a href="apropos.html" class="text-light text-decoration-none">À propos</a></li>
             <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+            <li><a href="galerie.html" class="text-light text-decoration-none">Galerie</a></li>
           </ul>
         </div>
         

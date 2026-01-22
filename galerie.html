@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie - PolyMaint</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo1.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* ===== CARROUSEL AVEC ICONE A DROITE ===== */
+    .hero-section-direct {
+        position: relative;
+        margin-top: 0;
+        height: 60vh;
+        min-height: 400px;
+        overflow: hidden;
+        color: white;
+    }
+    
+    .hero-carousel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .hero-carousel .carousel-inner,
+    .hero-carousel .carousel-item {
+        height: 100%;
+    }
+
+    .hero-carousel .carousel-item {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 1.5s ease-in-out;
+    }
+
+    /* Images du carousel */
+    .hero-carousel .carousel-item:nth-child(1) {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                          url('img/g1.jpeg');
+    }
+
+    .hero-carousel .carousel-item:nth-child(2) {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                          url('img/g2.jpeg');
+    }
+
+    .hero-carousel .carousel-item:nth-child(3) {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                          url('img/g3.jpeg');
+    }
+
+    /* Overlay léger qui disparaît */
+    .hero-carousel::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        animation: reduceOpacity 3s ease-out 1s forwards;
+    }
+
+    @keyframes reduceOpacity {
+        0% {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        100% {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    /* Contenu - aligné à gauche */
+    .hero-content-direct {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+    }
+
+    /* Texte à gauche */
+    .hero-text-left {
+        max-width: 600px;
+        text-align: left;
+        padding-right: 20px;
+    }
+
+    /* Titre en blanc */
+    .hero-main-title-direct {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.3rem;
+        line-height: 1.1;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+
+    /* Sous-titre en cyan */
+    .hero-subtitle-direct {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: #00ACC1 !important;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    /* Texte introductif */
+    .hero-text-intro {
+        text-align: justify;
+        text-justify: inter-word;
+        line-height: 1.7;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: white;
+        max-width: 550px;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        font-weight: 400;
+    }
+
+    /* Icône à droite - DESCENDUE */
+    .hero-icon-right {
+        position: absolute;
+        right: 5%;
+        top: 60%; /* DESCENDU de 50% à 60% */
+        transform: translateY(-50%);
+        z-index: 2;
+    }
+
+    .hero-icon-direct {
+        color: #00ACC1;
+        font-size: 8rem;
+        opacity: 0.7;
+        animation: pulse 3s infinite ease-in-out;
+        filter: drop-shadow(0 0 10px rgba(0, 172, 193, 0.4));
+    }
+
+    @keyframes pulse {
+        0%, 100% { 
+            transform: translateY(-50%) scale(1); 
+            opacity: 0.7; 
+        }
+        50% { 
+            transform: translateY(-50%) scale(1.05); 
+            opacity: 0.9; 
+        }
+    }
+
+    /* Bouton */
+    .hero-btn-direct {
+        background: linear-gradient(135deg, #00ACC1, #0097A7) !important;
+        border: none !important;
+        padding: 0.8rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        color: white !important;
+        font-size: 1rem;
+        border-radius: 6px;
+    }
+
+    .hero-btn-direct:hover {
+        background: linear-gradient(135deg, #FF9800, #F57C00) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Cacher les contrôles */
+    .hero-carousel .carousel-control-prev,
+    .hero-carousel .carousel-control-next,
+    .hero-carousel .carousel-indicators {
+        display: none;
+    }
+
+    /* ===== SECTION PHOTOS EN SLIDE ===== */
+    .photos-slide-section {
+        padding: 5rem 0;
+        background-color: #f8f9fa;
+    }
+
+    /* Titre "Nos Photos" avec dégradé du logo */
+    .section-title-photos {
+        color: #2c3e50;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #00ACC1, #FF9800);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Trait sous "Nos Photos" avec dégradé */
+    .section-title-photos:after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #00ACC1, #FF9800);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+    /* Sous-titre avec couleur */
+    .section-subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+
+    /* Grand espace pour le slide */
+    .slide-container {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        margin: 1rem auto 3rem auto;
+        background: #000;
+    }
+
+    .slide-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slide-item.active {
+        opacity: 1;
+        z-index: 2;
+        position: relative;
+    }
+
+    .slide-item img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        background: transparent;
+    }
+
+    /* Icône d'agrandissement sur les slides */
+    .slide-item {
+        position: relative;
+        z-index: 0;
+    }
+
+    .zoom-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 5;
+        opacity: 0;
+        transition: opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .slide-item:hover .zoom-icon {
+        opacity: 1;
+    }
+
+    .zoom-icon:hover {
+        background: rgba(0,0,0,0.8);
+        transform: scale(1.1);
+    }
+
+    /* Contrôles du slide */
+    .slide-controls {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        z-index: 10;
+    }
+
+    .slide-btn {
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+    }
+
+    .slide-btn:hover {
+        background: rgba(255,255,255,0.3);
+        transform: scale(1.1);
+    }
+
+    /* Indicateur de position */
+    .slide-indicator {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        background: white;
+        border-radius: 50px;
+        display: inline-block;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .current-slide {
+        color: #00ACC1;
+        font-size: 1.3rem;
+    }
+
+    .total-slides {
+        color: #666;
+    }
+
+    /* Miniatures en dessous */
+    .thumbnails-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .thumbnail {
+        width: 70px;
+        height: 70px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .thumbnail:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .thumbnail.active {
+        opacity: 1;
+        border-color: #00ACC1;
+        box-shadow: 0 5px 15px rgba(0,172,193,0.3);
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ===== SECTION VIDÉOS CARRÉES ===== */
+    .video-section {
+        padding: 5rem 0;
+        background: white;
+    }
+
+    /* Titre "Nos Vidéos" avec dégradé du logo */
+    .section-title-videos {
+        color: #2c3e50;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #00ACC1, #FF9800);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Trait sous "Nos Vidéos" avec dégradé */
+    .section-title-videos:after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #00ACC1, #FF9800);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+    /* Vidéos carrées avec HAUTEUR RÉDUITE */
+    .video-container-square {
+        position: relative;
+        width: 100%;
+        padding-bottom: 70%; /* RÉDUIT de 100% à 70% */
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .video-container-square video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-controls-square {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .video-container-square:hover .video-controls-square {
+        opacity: 1;
+    }
+
+    .video-controls-square .btn {
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .video-controls-square .btn:hover {
+        background: rgba(255,255,255,0.3);
+        transform: scale(1.1);
+    }
+
+    /* ===== LIGHTBOX MODAL ===== */
+    .lightbox-modal .modal-content {
+        background: rgba(0,0,0,0.95);
+        border: none;
+        border-radius: 0;
+    }
+
+    .lightbox-modal .modal-body {
+        padding: 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 90vh;
+    }
+
+    .lightbox-modal img {
+        max-width: 95%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 5px;
+    }
+
+    .lightbox-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 2rem;
+        z-index: 10;
+    }
+
+    .lightbox-controls .btn {
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+    }
+
+    .lightbox-controls .btn:hover {
+        background: rgba(255,255,255,0.3);
+        transform: scale(1.1);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 11;
+        color: white;
+        background: rgba(0,0,0,0.5);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
+    .lightbox-indicator {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        z-index: 10;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .hero-section-direct {
+            height: 50vh;
+            min-height: 350px;
+        }
+        
+        .hero-content-direct {
+            padding-top: 100px;
+        }
+        
+        .hero-main-title-direct {
+            font-size: 2.5rem;
+        }
+        
+        .hero-subtitle-direct {
+            font-size: 1.3rem;
+        }
+        
+        .hero-text-intro {
+            font-size: 1rem;
+            max-width: 100%;
+        }
+        
+        .hero-icon-direct {
+            font-size: 6rem;
+            position: relative;
+            right: 0;
+            top: 0;
+            transform: none;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .hero-icon-right {
+            position: relative;
+            right: 0;
+            top: 0;
+            transform: none;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .hero-text-left {
+            padding-right: 0;
+            text-align: center;
+            max-width: 100%;
+        }
+        
+        .hero-content-direct {
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .slide-container {
+            height: 400px;
+        }
+        
+        .video-container-square {
+            padding-bottom: 70%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section-direct {
+            height: auto;
+            min-height: 400px;
+            padding: 80px 0 40px 0;
+        }
+        
+        .hero-main-title-direct {
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .hero-subtitle-direct {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .hero-text-intro {
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 0 15px;
+        }
+        
+        .hero-icon-direct {
+            font-size: 4rem;
+        }
+        
+        .slide-container {
+            height: 350px;
+        }
+        
+        .slide-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .thumbnail {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .video-container-square {
+            padding-bottom: 70%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-section-direct {
+            min-height: 350px;
+            padding: 70px 0 30px 0;
+        }
+        
+        .hero-main-title-direct {
+            font-size: 1.8rem;
+        }
+        
+        .hero-subtitle-direct {
+            font-size: 1rem;
+        }
+        
+        .slide-container {
+            height: 300px;
+        }
+        
+        .slide-indicator {
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+        }
+        
+        .thumbnail {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .lightbox-controls .btn {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+
+    /* ===== SLIDER CUSTOM ===== */
+.slide-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* ajuste selon ton besoin */
+    overflow: hidden;
+}
+
+.slide-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.slide-item.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Miniatures */
+#thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail.active {
+    border-color: #FF9800;
+    transform: scale(1.1);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
+          <div class="d-flex flex-column">
+            <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
+            <small class="text-muted fw-light" style="font-size: 0.7rem; line-height: 1.1;">au service de vos équipements</small>
+          </div>
+        </a>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Accueil -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Accueil
+              </a>
+            </li>
+
+            <!-- Nos Domaines -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-layer-group me-1"></i>Nos Domaines
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electromécanique et Electricité</a></li>
+              </ul>
+            </li>
+
+            <!-- Nos Services -->
+            <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="fas fa-cogs me-1"></i>Nos Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="conseil.html"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item" href="maintenance.html"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+              </ul>
+            </li>
+
+            <!-- À Propos -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="apropos.html">
+                <i class="fas fa-info-circle me-1"></i>À Propos
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="contact.html">
+                <i class="fas fa-envelope me-1"></i>Contact
+              </a>
+            </li>
+
+            <!-- GALERIE -->
+            <li class="nav-item mx-1">
+              <a class="nav-link active" href="galerie.html">
+                <i class="fas fa-images me-1"></i>Galerie
+              </a>
+            </li>
+
+            <!-- WhatsApp -->
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-whatsapp px-2" href="https://wa.me/221763476161" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== CARROUSEL AVEC ICONE ET TEXTE ===== -->
+  <section class="hero-section-direct" id="hero">
+    <div class="hero-carousel">
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+          <div class="carousel-item active"></div>
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-icon-right">
+      <i class="fas fa-images hero-icon-direct"></i>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content-direct">
+        <div class="hero-text-left">
+          <h1 class="hero-main-title-direct">Galerie PolyMaint</h1>
+          <p class="hero-subtitle-direct">Découvrez notre univers en images et vidéos</p>
+          <div class="hero-text-intro">
+            <p>Explorez notre collection visuelle qui retrace nos réalisations, notre savoir-faire technique et l'engagement de nos équipes. Une immersion dans l'excellence opérationnelle de PolyMaint à travers ses images.</p>
+          </div>
+          
+          <a href="#photos" class="btn hero-btn-direct">
+            <i class="fas fa-camera me-2"></i>Voir notre galerie
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION PHOTOS EN SLIDE ===== -->
+  <section class="photos-slide-section" id="photos">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title-photos">Nos Photos</h2>
+          <p class="section-subtitle">Parcourez notre collection d'images</p>
+        </div>
+      </div>
+
+      <!-- Grand espace pour le slide -->
+      <div class="slide-container">
+        <!-- Les 13 images en slide -->
+        <div class="slide-item active" data-index="1">
+          <img src="img/g1.jpeg" alt="Image 1">
+          <div class="zoom-icon" onclick="openLightbox(0)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="2">
+          <img src="img/g2.jpeg" alt="Image 2">
+          <div class="zoom-icon" onclick="openLightbox(1)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="3">
+          <img src="img/g3.jpeg" alt="Image 3">
+          <div class="zoom-icon" onclick="openLightbox(2)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="4">
+          <img src="img/g4.jpeg" alt="Image 4">
+          <div class="zoom-icon" onclick="openLightbox(3)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="5">
+          <img src="img/g5.jpeg" alt="Image 5">
+          <div class="zoom-icon" onclick="openLightbox(4)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="6">
+          <img src="img/g6.jpeg" alt="Image 6">
+          <div class="zoom-icon" onclick="openLightbox(5)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="7">
+          <img src="img/g7.jpeg" alt="Image 7">
+          <div class="zoom-icon" onclick="openLightbox(6)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="8">
+          <img src="img/g8.jpeg" alt="Image 8">
+          <div class="zoom-icon" onclick="openLightbox(7)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="9">
+          <img src="img/g9.jpeg" alt="Image 9">
+          <div class="zoom-icon" onclick="openLightbox(8)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="10">
+          <img src="img/g10.jpeg" alt="Image 10">
+          <div class="zoom-icon" onclick="openLightbox(9)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="11">
+          <img src="img/g11.jpeg" alt="Image 11">
+          <div class="zoom-icon" onclick="openLightbox(10)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="12">
+          <img src="img/g12.jpeg" alt="Image 12">
+          <div class="zoom-icon" onclick="openLightbox(11)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="slide-item" data-index="13">
+          <img src="img/g13.jpeg" alt="Image 13">
+          <div class="zoom-icon" onclick="openLightbox(12)">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+
+        <!-- Contrôles fléchés -->
+        <div class="slide-controls">
+          <div class="slide-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="slide-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicateur de position -->
+      <div class="text-center">
+        <div class="slide-indicator">
+          <span class="current-slide" id="currentSlide">1</span>
+          <span> / </span>
+          <span class="total-slides">13</span>
+        </div>
+      </div>
+
+      <!-- Miniatures -->
+      <div class="thumbnails-container" id="thumbnails">
+        <!-- Les miniatures seront générées par JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION VIDÉOS CARRÉES ===== -->
+  <section class="video-section" id="videos">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title-videos">Nos Vidéos</h2>
+          <p class="section-subtitle">Visionnez notre contenu multimédia</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Vidéo 1 -->
+        <div class="col-md-6">
+          <div class="video-container-square">
+            <video muted playsinline>
+              <source src="img/v1.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div class="video-controls-square">
+              <button class="btn play-pause-btn" onclick="togglePlayPause(this)">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="btn mute-unmute-btn" onclick="toggleMute(this)">
+                <i class="fas fa-volume-mute"></i>
+              </button>
+              <button class="btn fullscreen-btn" onclick="toggleFullscreen(this)">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vidéo 2 -->
+        <div class="col-md-6">
+          <div class="video-container-square">
+            <video muted playsinline>
+              <source src="img/v2.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div class="video-controls-square">
+              <button class="btn play-pause-btn" onclick="togglePlayPause(this)">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="btn mute-unmute-btn" onclick="toggleMute(this)">
+                <i class="fas fa-volume-mute"></i>
+              </button>
+              <button class="btn fullscreen-btn" onclick="toggleFullscreen(this)">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX MODAL ===== -->
+  <div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <button type="button" class="lightbox-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-body">
+          <div class="lightbox-controls">
+            <button class="btn prev-btn" onclick="lightboxPrev()">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn next-btn" onclick="lightboxNext()">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="lightbox-indicator" id="lightboxIndicator">
+            <span id="lightboxCurrent">1</span> / <span>13</span>
+          </div>
+          <img id="lightboxImage" src="" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white pt-5 pb-4" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand mb-3">
+            <img src="img/logo.png" alt="PolyMaint" height="50" class="me-2">
+          </div>
+          <p class="text-light mb-4">
+            Votre partenaire pour une maintenance fiable et durable. 
+            Nous offrons des solutions techniques complètes pour tous vos équipements.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/Bme.sn" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/polymaint_suarl/" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/polymaint/posts/?feedView=all" target="_blank" class="text-white me-3 fs-5">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/221763476161" target="_blank" class="text-white fs-5">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="apropos.html" class="text-light text-decoration-none">À propos</a></li>
+            <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+            <li><a href="galerie.html" class="text-light text-decoration-none">Galerie</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="maintenance.html" class="text-light text-decoration-none">Maintenance</a></li>
+            <li class="mb-2"><a href="conseil.html" class="text-light text-decoration-none">Conseil</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="text-accent fw-bold mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-phone me-2 text-accent"></i>
+              <a href="tel:+221338311431" class="text-light text-decoration-none">+221 33 831 14 31</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:infos@polymaint.sn" class="text-light text-decoration-none">infos@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-envelope me-2 text-accent"></i>
+              <a href="mailto:sav@polymaint.sn" class="text-light text-decoration-none">sav@polymaint.sn</a>
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-globe me-2 text-accent"></i>
+              <a href="http://www.polymaint.sn" class="text-light text-decoration-none">www.polymaint.sn</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt me-2 text-accent"></i>
+              <span class="text-light">Sénégal</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="bg-secondary my-4">
+      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2026 PolyMaint – Galerie. Tous droits réservés.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script pour la galerie -->
+<script>
+  // ===== SLIDER PRINCIPAL =====
+  const slides = document.querySelectorAll('.slide-item');
+  const prevBtn = document.querySelector('.slide-controls .prev-btn');
+  const nextBtn = document.querySelector('.slide-controls .next-btn');
+  const currentSlideEl = document.getElementById('currentSlide');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+
+  // Initialisation miniatures
+  const thumbnailsContainer = document.getElementById('thumbnails');
+  slides.forEach((slide, index) => {
+    const thumb = document.createElement('div');
+    thumb.classList.add('thumbnail');
+    if(index === 0) thumb.classList.add('active');
+    const img = document.createElement('img');
+    img.src = slide.querySelector('img').src;
+    thumb.appendChild(img);
+    thumb.addEventListener('click', () => {
+      goToSlide(index);
+    });
+    thumbnailsContainer.appendChild(thumb);
+  });
+
+  function updateSlide() {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentIndex);
+    });
+    // Update miniatures
+    document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+      thumb.classList.toggle('active', index === currentIndex);
+    });
+    // Update indicateur
+    currentSlideEl.textContent = currentIndex + 1;
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateSlide();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlide();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlide();
+  });
+
+  // Optionnel : auto slide toutes les 5 secondes
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlide();
+  }, 5000);
+
+  // ===== LIGHTBOX =====
+  const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxCurrent = document.getElementById('lightboxCurrent');
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImage.src = slides[currentIndex].querySelector('img').src;
+    lightboxCurrent.textContent = currentIndex + 1;
+    lightboxModal.show();
+  }
+
+  function lightboxPrev() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    lightboxImage.src = slides[currentIndex].querySelector('img').src;
+    lightboxCurrent.textContent = currentIndex + 1;
+  }
+
+  function lightboxNext() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    lightboxImage.src = slides[currentIndex].querySelector('img').src;
+    lightboxCurrent.textContent = currentIndex + 1;
+  }
+
+  // ===== VIDÉOS =====
+  function togglePlayPause(btn) {
+    const video = btn.closest('.video-container-square').querySelector('video');
+    if(video.paused) {
+      video.play();
+      btn.querySelector('i').classList.replace('fa-play', 'fa-pause');
+    } else {
+      video.pause();
+      btn.querySelector('i').classList.replace('fa-pause', 'fa-play');
+    }
+  }
+
+  function toggleMute(btn) {
+    const video = btn.closest('.video-container-square').querySelector('video');
+    video.muted = !video.muted;
+    btn.querySelector('i').classList.toggle('fa-volume-mute');
+    btn.querySelector('i').classList.toggle('fa-volume-up');
+  }
+
+  function toggleFullscreen(btn) {
+    const videoContainer = btn.closest('.video-container-square');
+    if(document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      videoContainer.requestFullscreen();
+    }
+  }
+</script>
+
+
+</body>
+</html>
