@@ -563,7 +563,7 @@
                 <div class="contact-form-card">
                     <h2 class="section-title mb-4">Envoyez-nous un message</h2>
                     
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/mrepgqlp" method="post">
                         <div class="form-group">
                             <label for="name" class="form-label">Nom complet *</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
@@ -760,72 +760,5 @@
   
   <!-- Script pour animations -->
   <script src="js/script.js"></script>
-  
- <script>
-    // Gestion du formulaire de contact (sans serveur)
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('contactForm');
-        const submitBtn = form.querySelector('button[type="submit"]');
-        
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Empêche l'envoi HTTP
-            
-            // Vérifier la validité du formulaire
-            if (!form.checkValidity()) {
-                // Si invalide, déclencher la validation native
-                form.reportValidity();
-                return;
-            }
-            
-            // Animation sur soumission
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
-            submitBtn.disabled = true;
-            
-            // Simuler un délai d'envoi (2 secondes)
-            setTimeout(function() {
-                // Option 1: Rediriger directement vers merci.html
-                window.location.href = 'merci.html';
-                
-                // Option 2: Stocker les données dans localStorage pour affichage sur merci.html
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    date: new Date().toLocaleDateString('fr-FR')
-                };
-                localStorage.setItem('contactFormData', JSON.stringify(formData));
-                
-                // Rediriger
-                window.location.href = 'merci.html';
-            }, 2000);
-        });
-        
-        // Animation du bouton au survol
-        submitBtn.addEventListener('mouseenter', function() {
-            if (!this.disabled) {
-                this.style.transform = 'translateY(-2px)';
-            }
-        });
-        
-        submitBtn.addEventListener('mouseleave', function() {
-            if (!this.disabled) {
-                this.style.transform = 'translateY(0)';
-            }
-        });
-    });
-    
-    // Animation supplémentaire pour les champs de formulaire
-    document.querySelectorAll('.form-control').forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-        
-        input.addEventListener('blur', function() {
-            if (this.value === '') {
-                this.parentElement.classList.remove('focused');
-            }
-        });
-    });
-</script>
 </body>
 </html>
