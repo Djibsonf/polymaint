@@ -1118,3 +1118,109 @@ footer a.text-light:hover {
   justify-content: center;
   height: 70px;
 }
+/* ===== SECTION MOT DU DIRECTEUR ===== */
+#mot-directeur .quote-box {
+  background: white;
+  border-left: 5px solid #FF9800;
+  border-right: 5px solid #00ACC1;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border-radius: 10px !important;
+}
+
+#mot-directeur .quote-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(0, 172, 193, 0.05), transparent);
+  border-radius: 0 0 0 100px;
+}
+
+#mot-directeur .quote-box .text-primary {
+  color: #00ACC1 !important;
+  font-weight: 700;
+}
+
+/* Style pour l'image en cover */
+#mot-directeur .img-container {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+#mot-directeur .img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+#mot-directeur .img-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay pour le nom du directeur */
+#mot-directeur .director-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+#mot-directeur .director-overlay h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#mot-directeur .director-overlay small {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  #mot-directeur .quote-box {
+    margin-top: 2rem;
+  }
+  
+  #mot-directeur .img-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  #mot-directeur .quote-box {
+    padding: 1.5rem !important;
+  }
+  
+  #mot-directeur .quote-box p.fs-4 {
+    font-size: 1.2rem !important;
+  }
+  
+  #mot-directeur .img-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  #mot-directeur .img-container {
+    height: 250px;
+  }
+  
+  #mot-directeur .director-overlay {
+    padding: 1.5rem 0.5rem 0.5rem;
+  }
+}
