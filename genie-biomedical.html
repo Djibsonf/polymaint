@@ -353,19 +353,118 @@ body {
     border-left: 5px solid #FF9800;
 }
 
-/* Équipements */
-.equipment-item {
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 3px solid #00ACC1;
+/* Styles pour les features biomédicales */
+.feature-item {
+    position: relative;
+    padding-left: 10px;
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
 }
 
-.equipment-item:hover {
-    background: #e9ecef;
+.feature-item:hover {
     transform: translateX(5px);
+}
+
+.feature-icon-box {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.feature-icon-box i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.feature-item:hover .feature-icon-box {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content h5 {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.feature-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Image container biomédical */
+.biomedical-image-container {
+    height: auto;
+    max-height: 380px;
+    min-height: 280px;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.biomedical-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.biomedical-image-container:hover img {
+    transform: scale(1.05);
+}
+
+.biomedical-text {
+    padding-top: 20px;
+}
+
+/* Badge sur l'image biomédicale */
+.image-badge-biomedical {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+    animation: badgePulse 2s infinite;
+    z-index: 10;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Box en surbrillance sous l'image biomédicale */
+.highlight-box-biomedical {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.05), rgba(0, 172, 193, 0.05));
+    border-left: 4px solid #FF9800;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.highlight-box-biomedical:hover {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(0, 172, 193, 0.1));
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 /* Responsive pour les sections */
@@ -377,7 +476,34 @@ body {
     .content-card {
         padding: 1.5rem !important;
     }
+    
+    .biomedical-image-container {
+        max-height: 350px;
+        min-height: 250px;
+    }
+    
+    .feature-icon-box {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    
+    .feature-icon-box i {
+        font-size: 1.2rem;
+    }
 }
+
+@media (max-width: 768px) {
+    .biomedical-image-container {
+        padding: 10px; /* Espace intérieur */
+        margin-bottom: 20px; /* Espace en bas */
+    }
+    
+    .biomedical-text {
+        padding: 0 15px; /* Espace pour le texte aussi */
+    }
+}
+
 /* Fix uniquement pour la section CTA */
 .py-5 .btn-whatsapp {
     margin-left: 0 !important;
@@ -565,50 +691,94 @@ body {
       </div>
     </div>
   </section>
-  <!-- ===== GALERIE D'IMAGES ===== -->
-  <section class="py-5 bg-light" id="galerie">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-title mb-3">Nos Réalisations</h2>
-          <p class="lead text-muted">Découvrez nos interventions en génie biomédical</p>
-        </div>
-      </div>
 
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
-            <div class="placeholder-image bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
-              <i class="fas fa-camera fa-3x text-white opacity-50"></i>
+  <!-- ===== POURQUOI CHOISIR POLYMAINT (REMPLACE LA GALERIE) ===== -->
+  <section id="pourquoi-polymaint" class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-stretch">
+
+        <!-- COLONNE GAUCHE -->
+        <div class="col-lg-6 d-flex">
+          <div class="content-card p-5 w-100 d-flex flex-column">
+            <h2 class="fw-bold mb-4" style="color: #FF9800;">
+              <i class="fas fa-check-circle me-2"></i>Pourquoi choisir PolyMaint ?
+            </h2>
+
+            <div class="feature-item mb-4">
+              <div class="d-flex align-items-start">
+                <div class="feature-icon-box">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="feature-content">
+                  <h5 class="fw-bold mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: #4CAF50; font-size: 0.9rem;"></i>
+                    Expertise médicale certifiée
+                  </h5>
+                  <p class="mb-0">Notre équipe possède une expertise reconnue dans le domaine biomédical avec des certifications appropriées pour la maintenance des équipements médicaux critiques.</p>
+                </div>
+              </div>
             </div>
-            <div class="p-3 bg-white">
-              <p class="mb-0 fw-semibold">Salle de radiologie</p>
-              <small class="text-muted">Installation complète</small>
+
+            <div class="feature-item mb-4">
+              <div class="d-flex align-items-start">
+                <div class="feature-icon-box">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="feature-content">
+                  <h5 class="fw-bold mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: #4CAF50; font-size: 0.9rem;"></i>
+                    Conformité réglementaire
+                  </h5>
+                  <p class="mb-0">Respect strict des normes sanitaires et de sécurité (ISO, CE) pour garantir la fiabilité et la conformité de vos équipements médicaux.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="d-flex align-items-start">
+                <div class="feature-icon-box">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="feature-content">
+                  <h5 class="fw-bold mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: #4CAF50; font-size: 0.9rem;"></i>
+                    Réactivité 24h/24
+                  </h5>
+                  <p class="mb-0">Service d'urgence disponible 24h/24 et 7j/7 pour garantir la continuité des soins et minimiser les interruptions de service.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="col-lg-6 d-flex flex-column">
+          <div class="d-flex flex-column flex-grow-1">
+            <!-- IMAGE BIOMÉDICALE -->
+            <div class="biomedical-image-container flex-grow-1">
+              <img src="img/g12.jpeg" alt="Équipement biomédical" class="img-fluid w-100 h-100 object-fit-cover">
+              <div class="image-badge-biomedical">
+                <i class="fas fa-certificate me-2"></i>Expertise certifiée
+              </div>
+            </div>
+
+            <!-- TEXTE SOUS IMAGE -->
+            <div class="biomedical-text mt-4">
+              <div class="highlight-box-biomedical p-4">
+                <h5 class="fw-bold mb-3" style="color: #FF9800;">
+                  <i class="fas fa-star me-2"></i>Solutions sur mesure pour la santé
+                </h5>
+                <p class="mb-0" style="line-height: 1.8;">
+                  <i class="fas fa-arrow-right me-2" style="color: #00ACC1; font-size: 0.85rem;"></i>
+                  Nous accompagnons les établissements de santé dans l'optimisation de leur parc biomédical, 
+                  la formation du personnel et l'implémentation de solutions de maintenance préventive innovantes.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
-            <div class="placeholder-image bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
-              <i class="fas fa-camera fa-3x text-white opacity-50"></i>
-            </div>
-            <div class="p-3 bg-white">
-              <p class="mb-0 fw-semibold">Bloc opératoire</p>
-              <small class="text-muted">Maintenance préventive</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
-            <div class="placeholder-image bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
-              <i class="fas fa-camera fa-3x text-white opacity-50"></i>
-            </div>
-            <div class="p-3 bg-white">
-              <p class="mb-0 fw-semibold">Laboratoire d'analyse</p>
-              <small class="text-muted">Équipements modernes</small>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
