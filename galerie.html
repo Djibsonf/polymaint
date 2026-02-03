@@ -17,7 +17,10 @@
   <!-- CSS personnalisé -->
   <link rel="stylesheet" href="css/style.css">
   
-  <style>
+  
+</head>
+<body>
+    <style>
     /* ===== CARROUSEL AVEC ICONE A DROITE ===== */
     .hero-section-direct {
         position: relative;
@@ -771,15 +774,13 @@
 }
 
   </style>
-</head>
-<body>
 
   <!-- ===== HEADER ===== -->
-  <header>
+     <header>
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
       <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <!-- Logo dans la navbar avec texte -->
+        <a class="navbar-brand d-flex align-items-center" href="/accueil">
           <img src="img/logo.png" alt="PolyMaint" height="45" class="me-2">
           <div class="d-flex flex-column">
             <small class="text-muted fw-normal" style="font-size: 0.7rem; line-height: 1.1; margin-top: -1px; margin-left: 5%;">Polyvalence et Réactivité</small>
@@ -797,7 +798,7 @@
           <ul class="navbar-nav ms-auto align-items-center">
             <!-- Accueil -->
             <li class="nav-item mx-1">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link active" href="/accueil">
                 <i class="fas fa-home me-1"></i>Accueil
               </a>
             </li>
@@ -808,14 +809,13 @@
                 <i class="fas fa-layer-group me-1"></i>Nos Domaines
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="genie-biomedical.html"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
-                <li><a class="dropdown-item" href="industrie-automatisme.html"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
-                <li><a class="dropdown-item" href="froid-climatisation.html"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
-                <li><a class="dropdown-item" href="fluide-plomberie.html"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
-                <li><a class="dropdown-item" href="informatique-telecom.html"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
-                <li><a class="dropdown-item" href="electricite-electronique.html"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electromécanique et Electricité</a></li>
-              </ul>
-            </li>
+    <li><a class="dropdown-item" href="//genie-biomedical"><i class="fas fa-heartbeat me-2" style="color: #FF9800;"></i>Génie Biomédical</a></li>
+    <li><a class="dropdown-item" href="/industrie-automatisme"><i class="fas fa-industry me-2" style="color: #00ACC1;"></i>Industrie et Automatisme</a></li>
+    <li><a class="dropdown-item" href="/froid-climatisation"><i class="fas fa-snowflake me-2" style="color: #FF9800;"></i>Froid et Climatisation</a></li>
+    <li><a class="dropdown-item" href="/fluide-plomberie"><i class="fas fa-tint me-2" style="color: #00ACC1;"></i>Fluide et Plomberie</a></li>
+    <li><a class="dropdown-item" href="/informatique-telecom"><i class="fas fa-laptop-code me-2" style="color: #FF9800;"></i>Informatique et Telecom</a></li>
+    <li><a class="dropdown-item" href="/electricite-electronique"><i class="fas fa-bolt me-2" style="color: #00ACC1;"></i>Electromécanique et Electricité</a></li>
+</ul>
 
             <!-- Nos Services -->
             <li class="nav-item dropdown mx-1">
@@ -823,33 +823,32 @@
                 <i class="fas fa-cogs me-1"></i>Nos Services
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="conseil.html"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
-                <li><a class="dropdown-item" href="maintenance.html"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
+                <li><a class="dropdown-item" href="/conseil"><i class="fas fa-lightbulb me-2" style="color: #FF9800;"></i>Conseil</a></li>
+                <li><a class="dropdown-item" href="/maintenance"><i class="fas fa-tools me-2" style="color: #00ACC1;"></i>Maintenance</a></li>
               </ul>
             </li>
 
             <!-- À Propos -->
             <li class="nav-item mx-1">
-              <a class="nav-link" href="apropos.html">
+              <a class="nav-link" href="/a-propos">
                 <i class="fas fa-info-circle me-1"></i>À Propos
               </a>
             </li>
 
             <!-- Contact -->
             <li class="nav-item mx-1">
-              <a class="nav-link" href="contact.html">
+              <a class="nav-link" href="/contact">
                 <i class="fas fa-envelope me-1"></i>Contact
               </a>
             </li>
-
-            <!-- GALERIE -->
+             <!-- GALERIE -->
             <li class="nav-item mx-1">
-              <a class="nav-link active" href="galerie.html">
+              <a class="nav-link" href="/galerie">
                 <i class="fas fa-images me-1"></i>Galerie
               </a>
             </li>
 
-            <!-- WhatsApp -->
+            <!-- WhatsApp CTA (vert simple) -->
             <li class="nav-item ms-lg-2">
               <a class="btn btn-whatsapp px-2" href="https://wa.me/221763476161" target="_blank">
                 <i class="fab fa-whatsapp me-2"></i>WhatsApp
@@ -860,6 +859,7 @@
       </div>
     </nav>
   </header>
+
 
   <!-- ===== CARROUSEL AVEC ICONE ET TEXTE ===== -->
   <section class="hero-section-direct" id="hero">
@@ -905,96 +905,8 @@
       </div>
 
       <!-- Grand espace pour le slide -->
-      <div class="slide-container">
-        <!-- Les 13 images en slide -->
-        <div class="slide-item active" data-index="1">
-          <img src="img/g1.jpeg" alt="Image 1">
-          <div class="zoom-icon" onclick="openLightbox(0)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="2">
-          <img src="img/g2.jpeg" alt="Image 2">
-          <div class="zoom-icon" onclick="openLightbox(1)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="3">
-          <img src="img/g3.jpeg" alt="Image 3">
-          <div class="zoom-icon" onclick="openLightbox(2)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="4">
-          <img src="img/g4.jpeg" alt="Image 4">
-          <div class="zoom-icon" onclick="openLightbox(3)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="5">
-          <img src="img/g5.jpeg" alt="Image 5">
-          <div class="zoom-icon" onclick="openLightbox(4)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="6">
-          <img src="img/g6.jpeg" alt="Image 6">
-          <div class="zoom-icon" onclick="openLightbox(5)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="7">
-          <img src="img/g7.jpeg" alt="Image 7">
-          <div class="zoom-icon" onclick="openLightbox(6)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="8">
-          <img src="img/g8.jpeg" alt="Image 8">
-          <div class="zoom-icon" onclick="openLightbox(7)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="9">
-          <img src="img/g9.jpeg" alt="Image 9">
-          <div class="zoom-icon" onclick="openLightbox(8)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="10">
-          <img src="img/g10.jpeg" alt="Image 10">
-          <div class="zoom-icon" onclick="openLightbox(9)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="11">
-          <img src="img/g11.jpeg" alt="Image 11">
-          <div class="zoom-icon" onclick="openLightbox(10)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="12">
-          <img src="img/g12.jpeg" alt="Image 12">
-          <div class="zoom-icon" onclick="openLightbox(11)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-        <div class="slide-item" data-index="13">
-          <img src="img/g13.jpeg" alt="Image 13">
-          <div class="zoom-icon" onclick="openLightbox(12)">
-            <i class="fas fa-expand"></i>
-          </div>
-        </div>
-
-        <!-- Contrôles fléchés -->
-        <div class="slide-controls">
-          <div class="slide-btn prev-btn">
-            <i class="fas fa-chevron-left"></i>
-          </div>
-          <div class="slide-btn next-btn">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </div>
+      <div class="slide-container" id="slideContainer">
+        <!-- Les images seront générées dynamiquement par JavaScript -->
       </div>
 
       <!-- Indicateur de position -->
@@ -1002,7 +914,7 @@
         <div class="slide-indicator">
           <span class="current-slide" id="currentSlide">1</span>
           <span> / </span>
-          <span class="total-slides">13</span>
+          <span class="total-slides" id="totalSlides">0</span>
         </div>
       </div>
 
@@ -1023,48 +935,8 @@
         </div>
       </div>
 
-      <div class="row">
-        <!-- Vidéo 1 -->
-        <div class="col-md-6">
-          <div class="video-container-square">
-            <video muted playsinline>
-              <source src="img/v1.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la vidéo.
-            </video>
-            <div class="video-controls-square">
-              <button class="btn play-pause-btn" onclick="togglePlayPause(this)">
-                <i class="fas fa-play"></i>
-              </button>
-              <button class="btn mute-unmute-btn" onclick="toggleMute(this)">
-                <i class="fas fa-volume-mute"></i>
-              </button>
-              <button class="btn fullscreen-btn" onclick="toggleFullscreen(this)">
-                <i class="fas fa-expand"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Vidéo 2 -->
-        <div class="col-md-6">
-          <div class="video-container-square">
-            <video muted playsinline>
-              <source src="img/v2.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la vidéo.
-            </video>
-            <div class="video-controls-square">
-              <button class="btn play-pause-btn" onclick="togglePlayPause(this)">
-                <i class="fas fa-play"></i>
-              </button>
-              <button class="btn mute-unmute-btn" onclick="toggleMute(this)">
-                <i class="fas fa-volume-mute"></i>
-              </button>
-              <button class="btn fullscreen-btn" onclick="toggleFullscreen(this)">
-                <i class="fas fa-expand"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+      <div class="row" id="videoContainer">
+        <!-- Les vidéos seront générées dynamiquement par JavaScript -->
       </div>
     </div>
   </section>
@@ -1086,7 +958,7 @@
             </button>
           </div>
           <div class="lightbox-indicator" id="lightboxIndicator">
-            <span id="lightboxCurrent">1</span> / <span>13</span>
+            <span id="lightboxCurrent">1</span> / <span id="lightboxTotal">0</span>
           </div>
           <img id="lightboxImage" src="" alt="">
         </div>
@@ -1122,21 +994,23 @@
           </div>
         </div>
         
+         <!-- Liens rapides -->
         <div class="col-lg-2 col-md-6 mb-4">
           <h5 class="text-accent fw-bold mb-4">Navigation</h5>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Accueil</a></li>
-            <li class="mb-2"><a href="apropos.html" class="text-light text-decoration-none">À propos</a></li>
-            <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
-            <li><a href="galerie.html" class="text-light text-decoration-none">Galerie</a></li>
+            <li class="mb-2"><a href="/accueil" class="text-light text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="/a-propos" class="text-light text-decoration-none">À propos</a></li>
+            <li><a href="/contact" class="text-light text-decoration-none">Contact</a></li>
+            <li><a href="/galerie" class="text-light text-decoration-none">Galerie</a></li>
           </ul>
         </div>
         
+        <!-- Services -->
         <div class="col-lg-3 col-md-6 mb-4">
           <h5 class="text-accent fw-bold mb-4">Nos Services</h5>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="maintenance.html" class="text-light text-decoration-none">Maintenance</a></li>
-            <li class="mb-2"><a href="conseil.html" class="text-light text-decoration-none">Conseil</a></li>
+            <li class="mb-2"><a href="/maintenance" class="text-light text-decoration-none">Maintenance</a></li>
+            <li class="mb-2"><a href="/conseil" class="text-light text-decoration-none">Conseil</a></li>
           </ul>
         </div>
         
@@ -1180,41 +1054,178 @@
   <!-- Bootstrap JS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   
-  <!-- Script pour la galerie -->
+  <!-- Script pour la galerie dynamique -->
 <script>
-  // ===== SLIDER PRINCIPAL =====
-  const slides = document.querySelectorAll('.slide-item');
-  const prevBtn = document.querySelector('.slide-controls .prev-btn');
-  const nextBtn = document.querySelector('.slide-controls .next-btn');
-  const currentSlideEl = document.getElementById('currentSlide');
-  const totalSlides = slides.length;
+  // ======================================================================
+  // CONFIGURATION CENTRALISÉE - MODIFIEZ ICI POUR AJOUTER/RETIRER DES MÉDIAS
+  // ======================================================================
+  
+  // Liste des images de la galerie (ajoutez simplement les noms de fichiers)
+  const GALLERY_IMAGES = [
+    'g1.jpeg',
+    'g2.jpeg',
+    'g3.jpeg',
+    'g4.jpeg',
+    'g5.jpeg',
+    'g6.jpeg',
+    'g7.jpeg',
+    'g8.jpeg',
+    'g9.jpeg',
+    'g10.jpeg',
+    'g11.jpeg',
+    'g12.jpeg',
+    'g13.jpeg',
+    'g14.jpeg',
+    'g15.jpeg',
+    'g16.jpeg',
+    'g17.jpeg',
+    'g18.jpeg',
+    'g19.jpeg',
+    // Ajoutez vos nouvelles images ici, par exemple:
+    'g20.jpeg',
+    'g21.jpeg',
+    'g22.jpeg',
+    'g23.jpeg',
+    'g24.jpeg',
+    'g25.jpeg',
+    'g26.jpeg',
+    'g27.jpeg',
+    'g28.jpeg',
+    'g29.jpeg',
+    'g30.jpeg',
+    'g31.jpeg',
+    'g32.jpeg',
+
+  ];
+
+  // Liste des vidéos (ajoutez simplement les noms de fichiers)
+  const GALLERY_VIDEOS = [
+    'v1.mp4',
+    'v2.mp4'
+    // Ajoutez vos nouvelles vidéos ici, par exemple:
+    // 'v3.mp4',
+    // 'v4.mp4',
+  ];
+
+  // Dossier où se trouvent les images et vidéos
+  const MEDIA_FOLDER = 'img/';
+
+  // ======================================================================
+  // CODE DE GÉNÉRATION DYNAMIQUE - NE PAS MODIFIER
+  // ======================================================================
+
   let currentIndex = 0;
+  const totalSlides = GALLERY_IMAGES.length;
 
-  // Initialisation miniatures
-  const thumbnailsContainer = document.getElementById('thumbnails');
-  slides.forEach((slide, index) => {
-    const thumb = document.createElement('div');
-    thumb.classList.add('thumbnail');
-    if(index === 0) thumb.classList.add('active');
-    const img = document.createElement('img');
-    img.src = slide.querySelector('img').src;
-    thumb.appendChild(img);
-    thumb.addEventListener('click', () => {
-      goToSlide(index);
+  // ===== GÉNÉRATION DES SLIDES =====
+  function generateSlides() {
+    const slideContainer = document.getElementById('slideContainer');
+    let slidesHTML = '';
+
+    GALLERY_IMAGES.forEach((imageName, index) => {
+      const activeClass = index === 0 ? 'active' : '';
+      slidesHTML += `
+        <div class="slide-item ${activeClass}" data-index="${index + 1}">
+          <img src="${MEDIA_FOLDER}${imageName}" alt="Image ${index + 1}">
+          <div class="zoom-icon" onclick="openLightbox(${index})">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+      `;
     });
-    thumbnailsContainer.appendChild(thumb);
-  });
 
+    // Ajouter les contrôles
+    slidesHTML += `
+      <div class="slide-controls">
+        <div class="slide-btn prev-btn">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="slide-btn next-btn">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    `;
+
+    slideContainer.innerHTML = slidesHTML;
+
+    // Mettre à jour le total
+    document.getElementById('totalSlides').textContent = totalSlides;
+    document.getElementById('lightboxTotal').textContent = totalSlides;
+
+    // Attacher les événements aux boutons
+    document.querySelector('.slide-controls .prev-btn').addEventListener('click', prevSlide);
+    document.querySelector('.slide-controls .next-btn').addEventListener('click', nextSlide);
+  }
+
+  // ===== GÉNÉRATION DES MINIATURES =====
+  function generateThumbnails() {
+    const thumbnailsContainer = document.getElementById('thumbnails');
+    thumbnailsContainer.innerHTML = '';
+
+    GALLERY_IMAGES.forEach((imageName, index) => {
+      const thumb = document.createElement('div');
+      thumb.classList.add('thumbnail');
+      if(index === 0) thumb.classList.add('active');
+      
+      const img = document.createElement('img');
+      img.src = `${MEDIA_FOLDER}${imageName}`;
+      img.alt = `Miniature ${index + 1}`;
+      
+      thumb.appendChild(img);
+      thumb.addEventListener('click', () => {
+        goToSlide(index);
+      });
+      
+      thumbnailsContainer.appendChild(thumb);
+    });
+  }
+
+  // ===== GÉNÉRATION DES VIDÉOS =====
+  function generateVideos() {
+    const videoContainer = document.getElementById('videoContainer');
+    let videosHTML = '';
+
+    GALLERY_VIDEOS.forEach((videoName, index) => {
+      videosHTML += `
+        <div class="col-md-6 mb-4">
+          <div class="video-container-square">
+            <video muted playsinline>
+              <source src="${MEDIA_FOLDER}${videoName}" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div class="video-controls-square">
+              <button class="btn play-pause-btn" onclick="togglePlayPause(this)">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="btn mute-unmute-btn" onclick="toggleMute(this)">
+                <i class="fas fa-volume-mute"></i>
+              </button>
+              <button class="btn fullscreen-btn" onclick="toggleFullscreen(this)">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    videoContainer.innerHTML = videosHTML;
+  }
+
+  // ===== SLIDER PRINCIPAL =====
   function updateSlide() {
+    const slides = document.querySelectorAll('.slide-item');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
     slides.forEach((slide, index) => {
       slide.classList.toggle('active', index === currentIndex);
     });
-    // Update miniatures
-    document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+    
+    thumbnails.forEach((thumb, index) => {
       thumb.classList.toggle('active', index === currentIndex);
     });
-    // Update indicateur
-    currentSlideEl.textContent = currentIndex + 1;
+    
+    document.getElementById('currentSlide').textContent = currentIndex + 1;
   }
 
   function goToSlide(index) {
@@ -1222,17 +1233,17 @@
     updateSlide();
   }
 
-  prevBtn.addEventListener('click', () => {
+  function prevSlide() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateSlide();
-  });
+  }
 
-  nextBtn.addEventListener('click', () => {
+  function nextSlide() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateSlide();
-  });
+  }
 
-  // Optionnel : auto slide toutes les 5 secondes
+  // Auto slide toutes les 5 secondes
   setInterval(() => {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateSlide();
@@ -1245,20 +1256,20 @@
 
   function openLightbox(index) {
     currentIndex = index;
-    lightboxImage.src = slides[currentIndex].querySelector('img').src;
+    lightboxImage.src = `${MEDIA_FOLDER}${GALLERY_IMAGES[currentIndex]}`;
     lightboxCurrent.textContent = currentIndex + 1;
     lightboxModal.show();
   }
 
   function lightboxPrev() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    lightboxImage.src = slides[currentIndex].querySelector('img').src;
+    lightboxImage.src = `${MEDIA_FOLDER}${GALLERY_IMAGES[currentIndex]}`;
     lightboxCurrent.textContent = currentIndex + 1;
   }
 
   function lightboxNext() {
     currentIndex = (currentIndex + 1) % totalSlides;
-    lightboxImage.src = slides[currentIndex].querySelector('img').src;
+    lightboxImage.src = `${MEDIA_FOLDER}${GALLERY_IMAGES[currentIndex]}`;
     lightboxCurrent.textContent = currentIndex + 1;
   }
 
@@ -1289,6 +1300,13 @@
       videoContainer.requestFullscreen();
     }
   }
+
+  // ===== INITIALISATION AU CHARGEMENT DE LA PAGE =====
+  document.addEventListener('DOMContentLoaded', function() {
+    generateSlides();
+    generateThumbnails();
+    generateVideos();
+  });
 </script>
 
 

@@ -1,0 +1,154 @@
+# ====================================================================
+# CONFIGURATION URLS PROPRES - POLYMAINT
+# ====================================================================
+
+# Activer le module de réécriture
+RewriteEngine On
+
+# Forcer HTTPS (optionnel mais recommandé)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Rediriger www vers non-www (optionnel)
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# ====================================================================
+# REDIRECTIONS PERSONNALISÉES
+# ====================================================================
+
+# Accueil : polymaint.sn/ ou polymaint.sn/accueil → index.html
+RewriteRule ^accueil/?$ index.html [L]
+
+# À propos : polymaint.sn/a-propos → apropos.html
+RewriteRule ^a-propos/?$ apropos.html [L]
+
+# Contact : polymaint.sn/contact → contact.html
+RewriteRule ^contact/?$ contact.html [L]
+
+# Galerie : polymaint.sn/galerie → galerie.html
+RewriteRule ^galerie/?$ galerie.html [L]
+# Merci : polymaint.sn/merci → merci.html
+RewriteRule ^merci/?$ merci.html [L]
+
+# ====================================================================
+# NOS DOMAINES
+# ====================================================================
+
+# Génie Biomédical
+RewriteRule ^genie-biomedical/?$ genie-biomedical.html [L]
+
+# Industrie et Automatisme
+RewriteRule ^industrie-automatisme/?$ industrie-automatisme.html [L]
+
+# Froid et Climatisation
+RewriteRule ^froid-climatisation/?$ froid-climatisation.html [L]
+
+# Fluide et Plomberie
+RewriteRule ^fluide-plomberie/?$ fluide-plomberie.html [L]
+
+# Informatique et Telecom
+RewriteRule ^informatique-telecom/?$ informatique-telecom.html [L]
+
+# Électricité et Électronique
+RewriteRule ^electricite-electronique/?$ electricite-electronique.html [L]
+
+# ====================================================================
+# NOS SERVICES
+# ====================================================================
+
+# Conseil
+RewriteRule ^conseil/?$ conseil.html [L]
+
+# Maintenance
+RewriteRule ^maintenance/?$ maintenance.html [L]
+
+# ====================================================================
+# REDIRECTION DES .HTML VERS URLS PROPRES (301 PERMANENT)
+# ====================================================================
+
+# Rediriger index.html vers /accueil
+RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteRule ^index\.html$ /accueil [R=301,L]
+
+# Rediriger apropos.html vers /a-propos
+RewriteCond %{THE_REQUEST} /apropos\.html [NC]
+RewriteRule ^apropos\.html$ /a-propos [R=301,L]
+
+# Rediriger contact.html vers /contact
+RewriteCond %{THE_REQUEST} /contact\.html [NC]
+RewriteRule ^contact\.html$ /contact [R=301,L]
+
+# Rediriger galerie.html vers /galerie
+RewriteCond %{THE_REQUEST} /galerie\.html [NC]
+RewriteRule ^galerie\.html$ /galerie [R=301,L]
+
+# Rediriger genie-biomedical.html
+RewriteCond %{THE_REQUEST} /genie-biomedical\.html [NC]
+RewriteRule ^genie-biomedical\.html$ /genie-biomedical [R=301,L]
+
+# Rediriger industrie-automatisme.html
+RewriteCond %{THE_REQUEST} /industrie-automatisme\.html [NC]
+RewriteRule ^industrie-automatisme\.html$ /industrie-automatisme [R=301,L]
+
+# Rediriger froid-climatisation.html
+RewriteCond %{THE_REQUEST} /froid-climatisation\.html [NC]
+RewriteRule ^froid-climatisation\.html$ /froid-climatisation [R=301,L]
+
+# Rediriger fluide-plomberie.html
+RewriteCond %{THE_REQUEST} /fluide-plomberie\.html [NC]
+RewriteRule ^fluide-plomberie\.html$ /fluide-plomberie [R=301,L]
+
+# Rediriger informatique-telecom.html
+RewriteCond %{THE_REQUEST} /informatique-telecom\.html [NC]
+RewriteRule ^informatique-telecom\.html$ /informatique-telecom [R=301,L]
+
+# Rediriger electricite-electronique.html
+RewriteCond %{THE_REQUEST} /electricite-electronique\.html [NC]
+RewriteRule ^electricite-electronique\.html$ /electricite-electronique [R=301,L]
+
+# Rediriger conseil.html
+RewriteCond %{THE_REQUEST} /conseil\.html [NC]
+RewriteRule ^conseil\.html$ /conseil [R=301,L]
+
+# Rediriger maintenance.html
+RewriteCond %{THE_REQUEST} /maintenance\.html [NC]
+RewriteRule ^maintenance\.html$ /maintenance [R=301,L]
+# Rediriger merci.html
+RewriteCond %{THE_REQUEST} /merci\.html [NC]
+RewriteRule ^merci\.html$ /merci [R=301,L]
+
+# ====================================================================
+# CONFIGURATION GÉNÉRALE
+# ====================================================================
+
+# Page d'erreur 404 personnalisée (optionnel)
+# ErrorDocument 404 /404.html
+
+# Désactiver l'affichage des dossiers
+Options -Indexes
+
+# Protection des fichiers sensibles
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# Activer la compression GZIP (optionnel - améliore les performances)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>
+
+# Cache des fichiers statiques (optionnel - améliore les performances)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>

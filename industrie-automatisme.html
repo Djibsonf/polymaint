@@ -412,6 +412,122 @@ body {
     margin-left: 0 !important;
     font-size: 15px;
 }
+/* ===== STYLES CARTE CYAN INDUSTRIE ===== */
+
+/* Container de la carte cyan */
+.cyan-card-container {
+    background: linear-gradient(135deg, rgba(0, 172, 193, 0.05), rgba(0, 172, 193, 0.02));
+    border-left: 4px solid #00ACC1;
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 172, 193, 0.1);
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyan-card-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+    background: linear-gradient(135deg, rgba(0, 172, 193, 0.08), rgba(0, 172, 193, 0.04));
+}
+
+/* Effet de bordure décorative */
+.cyan-card-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 96%, #00ACC1 100%);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Titre de la carte en cyan */
+.cyan-card-title {
+    color: #00ACC1 !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Icône cyan pour le titre */
+.cyan-card-title i {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+    background: rgba(0, 172, 193, 0.1);
+    padding: 0.5rem;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Texte de la carte */
+.cyan-card-text {
+    color: #444 !important;
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 0;
+    padding-left: 0.5rem;
+}
+
+/* Version alternative avec icône avant le paragraphe */
+.cyan-card-text-with-icon {
+    color: #444 !important;
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.cyan-card-text-with-icon i {
+    color: #00ACC1;
+    margin-right: 0.75rem;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* Version plus simple (sans container spécial) */
+.simple-cyan-title {
+    color: #00ACC1 !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.simple-cyan-text {
+    color: #555 !important;
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cyan-card-container {
+        padding: 1.25rem 1.25rem 1.25rem 1.75rem;
+    }
+    
+    .cyan-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .cyan-card-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
 
   </style>
 </head>
@@ -619,39 +735,53 @@ body {
   </section>
 
   <!-- ===== CONTENU DÉTAILLÉ ===== -->
-  <section class="py-5" id="details">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <div class="content-card p-5">
-            <h2 class="mb-4">Pourquoi choisir PolyMaint pour votre automatisation ?</h2>
-            <ul class="list-unstyled">
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Expertise multi-marques</strong> : Siemens, Schneider, Allen-Bradley, etc.</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Approche globale</strong> : De l'étude à la mise en service</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Maintenance prédictive</strong> : Réduction des arrêts imprévus</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Formation opérationnelle</strong> : Transfert de compétences</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Conformité normative</strong> : Respect des normes CE, NF, etc.</li>
-              <li><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Support réactif</strong> : Interventions rapides 24h/24 si besoin</li>
-            </ul>
-          </div>
+<section class="py-5" id="details">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Colonne gauche -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="content-card p-5">
+          <h2 class="mb-4">Pourquoi choisir PolyMaint pour votre automatisation ?</h2>
+          <ul class="list-unstyled">
+            <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Expertise multi-marques</strong> : Siemens, Schneider, Allen-Bradley, etc.</li>
+            <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Approche globale</strong> : De l'étude à la mise en service</li>
+            <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Maintenance prédictive</strong> : Réduction des arrêts imprévus</li>
+            <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Formation opérationnelle</strong> : Transfert de compétences</li>
+            <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Conformité normative</strong> : Respect des normes CE, NF, etc.</li>
+            <li><i class="fas fa-check-circle me-2" style="color: #00ACC1;"></i> <strong>Support réactif</strong> : Interventions rapides 24h/24 si besoin</li>
+          </ul>
         </div>
-            <div class="col-lg-6">
-  <div class="text-center">
-    <div class="industrial-partner-card rounded-3 mb-4 p-4" style="height: 300px; display: flex; align-items: center; justify-content: center; background: white; border: 1px solid #00ACC1; box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);">
-      <div class="partner-logo-container">
-        <img src="img/siemens.jpeg" alt="Siemens" class="img-fluid" style="max-height: 180px; max-width: 100%; object-fit: contain;">
       </div>
+
+      <!-- Colonne droite -->
+      <div class="col-lg-6">
+        <div class="text-center">
+
+          <div class="industrial-partner-card rounded-3 mb-4 p-4" 
+               style="height: 255px; display: flex; align-items: center; justify-content: center; background: white; border: 1px solid #00ACC1; box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);">
+            <div class="partner-logo-container">
+              <img src="img/siemens.jpeg" alt="Siemens" class="img-fluid" 
+                   style="max-height: 180px; max-width: 100%; object-fit: contain;">
+            </div>
+          </div>
+
+          <div class="cyan-card-container">
+            <h3 class="cyan-card-title">
+              <i class="fas fa-industry"></i>Modernisez votre outil de production
+            </h3>
+            <p class="cyan-card-text-with-icon">
+              <i class="fas fa-arrow-right"></i>
+              Nous transformons vos lignes manuelles ou semi-automatiques en chaînes entièrement automatisées, augmentant ainsi votre productivité tout en réduisant les coûts opérationnels.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-    <h3 class="h4 mb-3">Modernisez votre outil de production</h3>
-    <p class="text-muted">Nous transformons vos lignes manuelles ou semi-automatiques en chaînes entièrement automatisées, augmentant ainsi votre productivité tout en réduisant les coûts opérationnels.</p>
   </div>
-</div>
-</div>
-      </div>
-    </div>
-  </section>
-
-
+</section>
   <!-- ===== CTA SECTION ===== -->
   <section class="py-5" style="background: linear-gradient(135deg, #00ACC1, #FF9800);">
     <div class="container">
@@ -753,8 +883,7 @@ body {
       
       <div class="row">
         <div class="col-md-12 text-center">
-          <p class="mb-0">© 2026 PolyMaint - Pôle Industie et Automatisme. Tous droits réservés.</p>
-          <small class="text-muted">Images d'illustration industrielle - Tous droits réservés</small>
+          <p class="mb-0">© 2026 PolyMaint - Pôle Industrie et Automatisme. Tous droits réservés.</p>
         </div>
       </div>
     </div>
