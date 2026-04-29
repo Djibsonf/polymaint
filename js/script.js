@@ -1,5 +1,10 @@
 // Configuration du carousel
 document.addEventListener('DOMContentLoaded', function() {
+    // ===== CONSTANTES PARTAGÉES (images/vidéos) =====
+    const MEDIA = (window.POLYMAINT_MEDIA || {});
+    const MEDIA_FOLDER = MEDIA.MEDIA_FOLDER || 'img/';
+    const GALLERY_IMAGES = Array.isArray(MEDIA.GALLERY_IMAGES) ? MEDIA.GALLERY_IMAGES : [];
+
     // ===== CAROUSEL CONFIGURATION =====
     const heroCarousel = document.getElementById('hero-carousel');
     if (heroCarousel) {
@@ -33,6 +38,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.boxShadow = 'none';
             });
         });
+    }
+
+    // ===== APERÇU RÉALISATIONS (DIAPORAMA 6 PAR 6) =====
+    const realisationsGrid = document.getElementById('realisationsGrid');
+    if (realisationsGrid && GALLERY_IMAGES.length > 0) {
+        const perPage = Math.max(1, parseInt(realisationsGrid.dataset.perPage || '6', 10) || 6);
+        const intervalMs = Math.max(800, parseInt(realisationsGrid.dataset.interval || '3500', 10) || 3500);
+
+        let pageIndex = 0;
+        const totalPages = Math.max(1, Math.ceil(GALLERY_IMAGES.length / perPage));
+
+        const buildTileHtml = (imageName, absoluteIndex) => {
+            const num = absoluteIndex + 1;
+            const src = `${MEDIA_FOLDER}${imageName}`;
+            return `
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a class="realisations-tile" href="galerie.html" aria-label="Voir la galerie PolyMaint (photo ${num})">
+                        <img src="${src}" alt="Réalisation PolyMaint ${num}" loading="lazy">
+                    </a>
+                </div>
+            `.trim();
+        };
+
+        const renderPage = (nextIndex) => {
+            const start = nextIndex * perPage;
+            const slice = GALLERY_IMAGES.slice(start, start + perPage);
+            // Si la dernière page n'a pas assez d'images, boucler au début
+            const images = slice.length === perPage
+                ? slice
+                : slice.concat(GALLERY_IMAGES.slice(0, perPage - slice.length));
+
+            const html = images
+                .map((img, i) => buildTileHtml(img, (start + i) % GALLERY_IMAGES.length))
+                .join('\n');
+
+            realisationsGrid.innerHTML = html;
+        };
+
+        // 1er rendu immédiat
+        renderPage(pageIndex);
+
+        // Diaporama avec petite transition d'opacité
+        window.setInterval(() => {
+            pageIndex = (pageIndex + 1) % totalPages;
+            realisationsGrid.classList.add('is-fading');
+            window.setTimeout(() => {
+                renderPage(pageIndex);
+                realisationsGrid.classList.remove('is-fading');
+            }, 220);
+        }, intervalMs);
     }
     
     // ===== SMOOTH SCROLL =====
