@@ -21,7 +21,7 @@
 }
 
 .navbar-brand {
-    margin-right: 2rem !important;
+    margin-right: 1rem !important;
 }
 
 .navbar-nav .nav-item {
@@ -215,6 +215,28 @@
     letter-spacing: 0.5px;
 }
 
+/* Resserre légèrement le bloc logo + slogan (évite de couper WhatsApp) */
+.navbar-brand .d-flex.flex-column small {
+    margin-left: 0 !important; /* override des styles inline */
+    letter-spacing: 0.2px;
+}
+
+@media (min-width: 992px) {
+    /* Un peu plus compact sur desktop */
+    .navbar-brand img {
+        margin-right: 0.4rem;
+    }
+
+    .navbar-brand small {
+        font-size: 0.68rem;
+        line-height: 1.05;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.45rem 0.75rem !important;
+    }
+}
+
 /* Alignement du menu */
 .navbar-nav .nav-item {
     display: flex;
@@ -277,7 +299,7 @@
     border: none !important;
     font-weight: 800;
     font-size: 0.7rem;
-    margin-left: -20%;
+    margin-left: 0;
     padding: 0.6rem 1.5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -296,6 +318,49 @@
 .btn-whatsapp i {
     font-size: 1.5em;
     margin-right: 0.5rem;
+}
+
+/* WhatsApp dans la navbar: éviter le débordement */
+.navbar .btn-whatsapp {
+    margin-left: 0 !important;
+}
+
+/* ===== APERÇU RÉALISATIONS (ACCUEIL) ===== */
+.realisations-tile {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.realisations-tile img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+}
+
+.realisations-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 576px) {
+    .realisations-tile img {
+        height: 95px;
+    }
+}
+
+/* Diaporama: transition douce (Accueil) */
+.realisations-grid--fade {
+    transition: opacity 220ms ease;
+}
+
+.realisations-grid--fade.is-fading {
+    opacity: 0;
 }
 
 /* Bouton toggler mobile */
