@@ -135,6 +135,9 @@
                   <a href="/contact" class="btn btn-accent btn-lg px-4">
                     <i class="fas fa-phone-alt me-2"></i>Nous contacter
                   </a>
+                  <a href="/galerie" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-images me-2"></i>Nos réalisations
+                  </a>
                   <a href="#services" class="btn btn-outline-light btn-lg px-4">
                     <i class="fas fa-cogs me-2"></i>Nos services
                   </a>
@@ -199,6 +202,31 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Suivant</span>
     </button>
+  </section>
+
+  <!-- ===== APERÇU GALERIE / RÉALISATIONS ===== -->
+  <section class="py-5 bg-light" id="realisations">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title mb-3">Nos réalisations en images</h2>
+          <p class="lead text-muted mb-0">Un aperçu concret de nos interventions et installations</p>
+        </div>
+      </div>
+
+      <div
+        class="row g-4 realisations-grid realisations-grid--fade"
+        id="realisationsGrid"
+        data-per-page="6"
+        data-interval="3500"
+      ></div>
+
+      <div class="text-center mt-4">
+        <a href="/galerie" class="btn btn-outline-accent">
+          Voir toute la galerie <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
   </section>
 
 
@@ -290,7 +318,7 @@
               <li><i class="fas fa-check-circle me-2 text-success"></i>Support technique pour les établissements de santé</li>
             </ul>
             <div class="mt-4">
-            <a href="genie-biomedical.html" class="btn btn-outline-accent">
+            <a href="/genie-biomedical" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -310,7 +338,7 @@
               <li><i class="fas fa-check-circle me-2 text-success"></i>Déploiement de systèmes de communication et télécom</li>
             </ul>
               <div class="mt-4">
-            <a href="informatique-telecom.html" class="btn btn-outline-accent">
+            <a href="/informatique-telecom" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -330,7 +358,7 @@
               <li><i class="fas fa-check-circle me-2 text-success"></i>Électromécanique et robotisation</li>
             </ul>
             <div class="mt-4">
-            <a href="industrie-automatisme.html" class="btn btn-outline-accent">
+            <a href="/industrie-automatisme" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -353,7 +381,7 @@
               <li><i class="fas fa-check-circle me-2 text-success"></i>Étanchéité et gestion des fluides industriels</li>
             </ul>
             <div class="mt-4">
-            <a href="fluide-plomberie.html" class="btn btn-outline-accent">
+            <a href="/fluide-plomberie" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -373,7 +401,7 @@
               <li><i class="fas fa-check-circle me-2 text-success"></i>Diagnostic et optimisation des performances énergétiques</li>
             </ul>
             <div class="mt-4">
-            <a href="froid-climatisation.html" class="btn btn-outline-accent">
+            <a href="/froid-climatisation" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -393,7 +421,7 @@
               <li><i class="fas fa-check-circle me-2 text-success"></i>Sécurisation des installations électriques</li>
             </ul>
             <div class="mt-4">
-            <a href="electricite-electronique.html" class="btn btn-outline-accent">
+            <a href="/electricite-electronique" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -422,7 +450,7 @@
           <h3 class="h5 fw-bold mb-3">Conseil</h3>
           <p class="mb-3">Notre expertise vous guide dans le choix et l'optimisation de vos solutions techniques.</p>
           <div class="mt-4">
-            <a href="conseil.html" class="btn btn-outline-accent">
+            <a href="/conseil" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -438,7 +466,7 @@
           <h3 class="h5 fw-bold mb-3">Maintenance</h3>
           <p class="mb-3">Suivi continu et interventions qualifiées pour garantir la performance de vos équipements.</p>
           <div class="mt-4">
-            <a href="maintenance.html" class="btn btn-outline-accent">
+            <a href="/maintenance" class="btn btn-outline-accent">
               En savoir plus <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -813,6 +841,9 @@
   <!-- Bootstrap JS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   
+  <!-- Constantes médias (images/vidéos) -->
+  <script src="js/media.constants.js"></script>
+
   <!-- Script pour animations -->
   <script src="js/script.js"></script>
 </body>
